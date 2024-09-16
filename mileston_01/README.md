@@ -24,7 +24,8 @@
 <h2>How to Run the Project</h2>
 <ol>
  <li>Clone the repository to your local machine:
- https://github.com/yourusername/static-interactive-resume.git</li>
+ https://github.com/Shehreen43/Hackathon01__Interactive_Resume-Builder/tree/main/mileston_01</li>
+ 
 <li>Open the index.html file in a browser to view the static resume.</li>
 <li>Modify the content, if needed, by editing the index.html, styles.css, or script.js files.</li>
 </ol>
