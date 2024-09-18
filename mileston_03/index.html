@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Static Resume Builder By Shehreen Arshad</h1>
+    
+    
+    <img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture">
+<input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+
+    <form id="resumeBuilder">
+       
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="userName">User Name:</label>
+            <input type="text" id="userName" name="userName" required spellcheck="false" placeholder="Enter your name.">
+            <br>
+           
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Education</legend>
+            <label for="education">Education:</label>
+            <textarea name="education" id="education" rows="4" required></textarea><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Experience</legend>
+            <label for="experience">Experience:</label>
+            <textarea name="experience" id="experience" rows="4" required></textarea><br>
+        </fieldset>
+
+        <fieldset id="skills">
+            <legend>Skills</button></legend>
+            <label for="skills_exp">Skills Experience:</label>
+            <textarea name="skills" id="skills_exp" rows="4" required></textarea><br>
+        </fieldset>
+        
+       <!-- Button to toggle Skills section -->
+    <button type='button' id="toggle-skills">Toggle Skills</button>
+
+        <button type="submit">Generate Resume</button>
+    </form>
+
+    <!-- output side -->
+     <div id="resumeOutput">
+
+     </div>
+            <script src="script.js"></script>
+</body>
+</html>
