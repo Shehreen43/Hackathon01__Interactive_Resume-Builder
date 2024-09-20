@@ -5,7 +5,7 @@ const skillsSection: HTMLElement | null = document.getElementById("skills");
 
 // Select the profile picture and file input elements
 const profilePicture = document.getElementById("profilePicture") as HTMLImageElement;
-const profilePictureInput = document.getElementById("profilePictureInput") as HTMLInputElement;
+const profilePictureInput = document.querySelector("input[type=file]") as HTMLInputElement;
 
 // Add click event listener to the profile picture
 profilePicture.addEventListener("click", () => {
