@@ -23,7 +23,14 @@ profilePictureInput.addEventListener("change", (event) => {
     reader.readAsDataURL(file);
   }
 });
+const resumeBgColor = document.getElementById("bgColor") as HTMLInputElement;
+const resumeOutput = document.getElementById("resumeOutput");
 
+// Event listener to update the background color in real-time
+resumeBgColor.addEventListener("input", function () {
+  if (resumeOutput)
+  resumeOutput.style.backgroundColor = resumeBgColor.value;
+});
 document
   .getElementById("resumeBuilder")
   ?.addEventListener("submit", function (event) {
@@ -31,6 +38,12 @@ document
     const resumeName = document.getElementById("userName") as HTMLInputElement;
     const resumeEmail = document.getElementById("email") as HTMLInputElement;
     const resumePhone = document.getElementById("phone") as HTMLInputElement;
+    const resumeAddress = document.getElementById("address") as HTMLInputElement;
+    const resumeAboutMe = document.getElementById("aboutMe") as HTMLInputElement;
+    const resumeDOB = document.getElementById("dob") as HTMLInputElement;
+const resumeGender = document.getElementById("gender") as HTMLSelectElement;
+const resumeNationality = document.getElementById("nationality") as HTMLInputElement;
+const resumeBgColor = document.getElementById("bgColor") as HTMLInputElement;
     const resumeEducation = document.getElementById(
       "education"
     ) as HTMLInputElement;
@@ -43,6 +56,12 @@ document
       resumeName &&
       resumeEmail &&
       resumePhone &&
+      resumeAddress&&
+      resumeAboutMe&&
+      resumeDOB&&
+      resumeGender&&
+      resumeNationality&&
+      resumeBgColor&&
       resumeEducation &&
       resumeExperience &&
       resumeSkills
@@ -50,6 +69,12 @@ document
       const name = resumeName.value;
       const email = resumeEmail.value;
       const phone = resumePhone.value;
+      const address = resumeAddress.value;
+      const aboutMe = resumeAboutMe.value;
+      const dob = resumeDOB.value;
+      const gender = resumeGender.value;
+      const nationality = resumeNationality.value;
+      const bgColor = resumeBgColor.value;
       const education = resumeEducation.value;
       const experience = resumeExperience.value;
       const skills = resumeSkills.value;
@@ -57,21 +82,31 @@ document
 
       const resumeOutput = document.getElementById("resumeOutput");
       if (resumeOutput) {
-        resumeOutput.innerHTML = `
-        <img src="${profilePicture.src}" alt="Profile Picture">
-        <h2>Resume</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <hr>
-        <h3>Education</h3>
-        <p>${education}</p>
-        <hr>
-        <h3>Experience</h3>
-        <p>${experience}</p>
-        <hr>
-        <h3>Skills</h3>
-        <p>${skills}</p>
+        resumeOutput.innerHTML = `<div class="profile-container">
+    <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150">
+    <h2>Resume</h2>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>About Me:</strong> ${aboutMe}</p>
+  </div>
+  <hr>
+  <h3>Personal Details</h3>
+  <p><strong>Date of Birth:</strong> ${dob}</p>
+  <p><strong>Gender:</strong> ${gender}</p>
+  <p><strong>Nationality:</strong> ${nationality}</p>
+  <hr>
+  <h3>Contact Information</h3>
+  <p><strong>Email:</strong> ${email}</p>
+  <p><strong>Phone:</strong> ${phone}</p>
+  <p><strong>Address:</strong> ${address}</p>
+  <hr>
+  <h3>Education</h3>
+  <p>${education}</p>
+  <hr>
+  <h3>Experience</h3>
+  <p>${experience}</p>
+  <hr>
+  <h3>Skills</h3>
+  <p>${skills}</p>
     `;
     resumeOutput?.classList.remove("hidden");
     resumeOutput?.scrollIntoView({ behavior: "smooth" });
@@ -83,6 +118,10 @@ document
     }else{
         console.error("one or more of the input elements are missing.");
     }
+    // Apply the selected background color
+    const selectedBgColor = resumeBgColor.value;
+    if (resumeOutput)
+    resumeOutput.style.backgroundColor = selectedBgColor;
   });
 
      
