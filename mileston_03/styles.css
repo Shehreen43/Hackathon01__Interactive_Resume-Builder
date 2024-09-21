@@ -1,21 +1,22 @@
-body{
+body {
     font-family: 'Times New Roman', Times, serif;
     margin: 20px;
     padding: 0;
-    background-color:rgb(5, 40, 40);
+    background-color: rgb(5, 40, 40);
 }
-h1{
+
+h1 {
     text-align: center;
     color: rgb(9, 205, 205);
 }
+
 img {
     border-radius: 50%;
-    margin-top: 10px;
     display: block;
-    margin: 5px auto;
+    margin: 10px auto 5px;
 }
 
-form{
+form {
     max-width: 600px;
     margin: auto;
     background-color: rgb(7, 83, 83);
@@ -24,28 +25,32 @@ form{
     position: relative;
 }
 
-fieldset{
+fieldset {
     border: 2px solid #60c1e4;
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
-    background-color:  rgb(15, 111, 111);    /* #2a7e81;*/
+    background-color: rgb(15, 111, 111);
 }
-#toggle-skills, legend{
+
+#toggle-skills,
+legend {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     text-align: center;
     color: white;
-    text-shadow: 2px 2px 5px  black;
+    text-shadow: 2px 2px 5px black;
     border: none;
     background: transparent;
-    padding: 0px;
-    margin-bottom: 5px
+    padding: 0;
+    margin-bottom: 5px;
 }
-label{
-    display:block;
+
+label {
+    display: block;
     margin-top: 10px;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -53,7 +58,7 @@ input[type="date"],
 input[type="color"],
 select,
 textarea {
-    width: 95% ;
+    width: 95%;
     padding: 8px;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -61,76 +66,81 @@ textarea {
     border-radius: 20px;
     box-sizing: border-box;
     background: transparent;
-    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3)
-
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
 }
+
 button[type="submit"] {
     width: 100%;
     background-color: #56aff2;
     color: rgb(245, 234, 234);
-    padding:5px 20px;
+    padding: 5px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-   font-size: 15px;
-  
+    font-size: 15px;
 }
+
 button[type="submit"]:hover {
     background-color: black;
-    box-shadow: 2px 3px 10px white
+    box-shadow: 2px 3px 10px white;
 }
+
 button[type="button"]:hover,
 input[type="text"]:hover,
-  input[type="email"]:hover,
-  input[type="tel"]:hover,
-  input[type="date"]:hover,
-  input[type="color"]:hover,
-  select:hover,
-  textarea:hover,form:hover, fieldset:hover {
-    box-shadow: 2px 2px 10px white
-  }
- 
-#resumeOutput{
+input[type="email"]:hover,
+input[type="tel"]:hover,
+input[type="date"]:hover,
+input[type="color"]:hover,
+select:hover,
+textarea:hover,
+form:hover,
+fieldset:hover {
+    box-shadow: 2px 2px 10px white;
+}
+
+#resumeOutput {
     max-width: 600px;
-    margin: auto;
+    margin: 2% auto 10px;
     padding: 20px;
     border-radius: 8px;
     background-color: rgb(105, 215, 215);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-#resumeOutput h2 h1{
-    color: black
-    
+
+#resumeOutput h1,
+#resumeOutput h2 {
+    color: black;
 }
+
 #resumeOutput img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-top: 10px;
     display: block;
-    margin: 5px auto;
-    object-fit: cover; /* Ensures the image is cropped correctly if not square */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* Optional: Adds a shadow */
+    margin: 10px auto 5px;
+    object-fit: cover;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
-/* Style the profile container */
+
 .profile-container {
-    text-align: center;  /* Centers the content horizontally */
+    text-align: center;
     margin: 20px auto;
 }
 
 .profile-container img {
     width: 150px;
     height: 150px;
-    border-radius: 50%;   /* Make the image circular */
-    object-fit: cover;    /* Crop the image to fit the container */
-    margin-bottom: 10px;  /* Space between the image and "About Me" text */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
 
 .profile-container p {
-    margin-top: 10px;    /* Adds space between elements */
-    font-size: 16px;     /* Optional: Change font size */
-    color: #333;         /* Optional: Customize text color */
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
 }
+
 #resumeOutput h3 {
     color: #333;
     text-align: left;
@@ -141,3 +151,14 @@ input[type="text"]:hover,
 #resumeOutput p {
     margin: 5px 0;
 }
+
+
+/*
+ width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #60c1e4;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+    color: #fff;*/

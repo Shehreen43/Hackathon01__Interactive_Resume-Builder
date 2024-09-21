@@ -1,4 +1,5 @@
 // script.ts
+/*
 const toggleSkillsButton: HTMLElement | null =
   document.getElementById("toggle-skills");
 const skillsSection: HTMLElement | null = document.getElementById("skills");
@@ -125,3 +126,4 @@ const resumeBgColor = document.getElementById("bgColor") as HTMLInputElement;
   });
 
      
+*/
