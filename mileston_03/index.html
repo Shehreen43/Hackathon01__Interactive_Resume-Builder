@@ -15,32 +15,32 @@
         <fieldset>
             <legend>Personal Information</legend>
 
-            <label for="userName">Name:</label>
+            <label for="userName"><strong>Name:</strong></label>
             <input type="text" id="userName" name="userName" required spellcheck="false" placeholder="Enter your name.">
 
-            <label for="aboutMe">About Me:</label>
+            <label for="aboutMe"><strong>About Me:</strong></label>
             <textarea id="aboutMe" name="aboutMe" placeholder="Write a short bio about yourself." required></textarea>
 
-            <label for="dob">Date of Birth:</label>
+            <label for="dob"><strong>Date of Birth:</strong></label>
             <input type="date" id="dob" name="dob" required>
 
-            <label for="gender">Gender:</label>
+            <label for="gender"><strong>Gender:</strong></label>
             <select id="gender" name="gender" required>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
 
-            <label for="nationality">Nationality:</label>
+            <label for="nationality"><strong><Nationality:</strong></label>
             <input type="text" id="nationality" name="nationality" required placeholder="Enter your nationality.">
 
-            <label for="email">Email:</label>
+            <label for="email"><strong>Email:</strong></label>
             <input type="email" id="email" name="email" required placeholder="Enter your email.">
 
-            <label for="phone">Phone:</label>
+            <label for="phone"><strong>Phone:</strong></label>
             <input type="tel" id="phone" name="phone" placeholder="Enter your Phone No#." required>
 
-            <label for="address">Address:</label>
+            <label for="address"><strong>Address:</strong></label>
             <input type="text" id="address" name="address" placeholder="Enter your full address." required>
 
             <label for="profilePictureInput">Upload your picture:</label>
@@ -50,7 +50,7 @@
         <fieldset>
             <legend>Education</legend>
             <div id="education-list">
-              <label for="education">Education:</label>
+              <label for="education"><strong>Education:</strong></label>
               <textarea name="education" id="education" rows="2" placeholder="Enter your education." required></textarea>
             </div>
             <button type="button" id="add-education">Add More Education</button><br>
@@ -59,16 +59,16 @@
           <fieldset>
             <legend>Experience</legend>
             <div id="experience-list">
-              <label for="experience">Experience:</label>
+              <label for="experience"><strong>Experience:</strong></label>
               <textarea name="experience" id="experience" rows="2" placeholder="Please share your job experience." required></textarea>
             </div>
             <button type="button" id="add-experience">Add More Experience</button><br>
           </fieldset>
           
-          <fieldset>
+          <fieldset id="skills">
             <legend>Skills</legend>
             <div id="skills-list">
-              <label for="skills_exp">Skills:</label>
+              <label for="skills_exp"><strong>Skills:</strong></label>
               <textarea name="skills" id="skills_exp" rows="2" placeholder="Please enter skills." required></textarea>
             </div>
             <button type="button" id="add-skills">Add More Skills</button><br>
@@ -77,13 +77,13 @@
           <fieldset>
             <legend>Customize Resume</legend>
             
-            <label for="bgColor">Select Resume Background Color:</label>
+            <label for="bgColor"><strong>Select Resume Background Color:</strong></label>
             <input type="color" id="bgColor" name="bgColor" value="#69d7d7"><br>
           
-            <label for="headingColor">Select Heading Font Color:</label>
+            <label for="headingColor"><strong>Select Heading Font Color:</strong></label>
             <input type="color" id="headingColor" name="headingColor" value="#333333"><br>
           
-            <label for="paragraphColor">Select Paragraph Font Color:</label>
+            <label for="paragraphColor"><strong>Select Paragraph Font Color:</strong></label>
             <input type="color" id="paragraphColor" name="paragraphColor" value="#000000"><br>
           </fieldset>
           
@@ -95,6 +95,6 @@
 
     <div id="resumeOutput"></div>
 
-    <script src="scrip.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
