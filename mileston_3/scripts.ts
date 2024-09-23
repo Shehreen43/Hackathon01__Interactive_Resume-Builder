@@ -274,7 +274,7 @@ document.getElementById("resumeBuilder")
         resumeOutput.innerHTML = `
 
       <div class="profile-container">
-      <h1>Resume</h1>
+      <h1 style.color = "white";>Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150">
         <div>
        <h2>${name}</h2>
