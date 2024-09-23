@@ -16,21 +16,42 @@
         <fieldset>
             <legend>Personal Information</legend>
 
-            <label for="userName">User Name:</label>
+            <label for="userName"><strong>Name:</strong></label>
             <input type="text" id="userName" name="userName" required spellcheck="false" placeholder="Enter your name.">
-            <br>
-           
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
 
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required>
+            <label for="aboutMe"><strong>About Me:</strong></label>
+            <textarea id="aboutMe" name="aboutMe" placeholder="Write a short bio about yourself." required></textarea>
+
+            <label for="dob"><strong>Date of Birth:</strong></label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="gender"><strong>Gender:</strong></label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="nationality"><strong>Nationality:</strong></label>
+            <input type="text" id="nationality" name="nationality" required placeholder="Enter your nationality.">
+
+            <label for="email"><strong>Email:</strong></label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email.">
+
+            <label for="phone"><strong>Phone:</strong></label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your Phone No#." required>
+
+            <label for="address"><strong>Address:</strong></label>
+            <input type="text" id="address" name="address" placeholder="Enter your full address." required>
+
+            <label for="profilePictureInput">Upload your picture:</label>
+            <input type="file" id="profilePictureInput" accept="image/*">
         </fieldset>
 
         <fieldset>
             <legend>Education</legend>
             <label for="education">Education:</label>
-            <textarea name="education" id="education" rows="4" required></textarea><br>
+            <textarea name="education" id="education" rows="4" placeholder="Enter your education."  required></textarea><br>
         </fieldset>
 
         <fieldset>
