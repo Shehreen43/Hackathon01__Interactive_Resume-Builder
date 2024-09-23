@@ -1,10 +1,10 @@
-
-body{
+body {
     font-family: 'Times New Roman', Times, serif;
     margin: 20px;
     padding: 0;
-    background-color:rgb(5, 40, 40);
+    background-color: rgb(5, 40, 40);
 }
+
 h1 {
     text-shadow: 2px 2px 5px black;
     text-align: center;
@@ -35,6 +35,7 @@ fieldset {
     margin: 20px;
     background-color: rgb(15, 111, 111);
 }
+
 #toggle-skills,
 legend {
     font-family: 'Times New Roman', Times, serif;
@@ -47,6 +48,7 @@ legend {
     padding: 0;
     margin-bottom: 5px;
 }
+
 button {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
@@ -80,11 +82,14 @@ textarea {
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
     border-color: #342dbb;
     box-shadow: 0 0 10px #322e7c
 }
+
 button[type="submit"] {
     width: 100%;
     background-color: #56aff2;
@@ -100,24 +105,25 @@ button[type="submit"]:hover {
     background-color: black;
     box-shadow: 2px 3px 10px white;
 }
+
 .error-message {
     color: red;
     font-size: 0.9em;
-  }
-  
-  .delete-button {
-    background-color: #dc3545;
+}
+
+.delete-button {
+    background-color: #c13e4b;
     color: white;
     border: none;
     padding: 5px 10px;
     margin-left: 10px;
     border-radius: 3px;
     cursor: pointer;
-  }
-  
-  .delete-button:hover {
-    background-color: #c82333;
-  }
+}
+
+.delete-button:hover {
+    background-color: #900715;
+}
 
 button:hover,
 input:hover,
@@ -142,9 +148,9 @@ fieldset:hover {
 
 
 
-#resumeOutput h2, 
-#resumeOutput h3, 
-#resumeOutput strong, 
+#resumeOutput h2,
+#resumeOutput h3,
+#resumeOutput strong,
 #resumeOutput p {
     color: black;
     margin: 5px 0;
@@ -178,14 +184,18 @@ ul li {
 
 /* Responsive behavior */
 @media screen and (max-width: 600px) {
-    form, #resumeOutput {
+
+    form,
+    #resumeOutput {
         width: 100%;
     }
 
-    textarea, 
-    input[type="text"], 
-    input[type="email"], 
-    input[type="tel"] {
+    textarea,
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select{
         width: 98%;
     }
 }

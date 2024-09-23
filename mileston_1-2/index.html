@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reume Builder</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <h1> Static Interactive Resume Builder By Shehreen Arshad</h1>
-    
+
     <img src="dp me.jpg" alt="Profile Picture" width="150">
-    
+
     <form id="resumeBuilder">
         <fieldset>
             <legend>Personal Information</legend>
@@ -51,7 +53,8 @@
         <fieldset>
             <legend>Education</legend>
             <label for="education">Education:</label>
-            <textarea name="education" id="education" rows="4" placeholder="Enter your education."  required></textarea><br>
+            <textarea name="education" id="education" rows="4" placeholder="Enter your education."
+                required></textarea><br>
         </fieldset>
 
         <fieldset>
@@ -65,14 +68,15 @@
             <label for="skills_exp">Skills Experience:</label>
             <textarea name="skills" id="skills_exp" rows="4" required></textarea><br>
         </fieldset>
-        
-       <!-- Button to toggle Skills section -->
-    <button type='button' id="toggle-skills">Toggle Skills</button>
+
+        <!-- Button to toggle Skills section -->
+        <button type='button' id="toggle-skills">Toggle Skills</button>
 
         <button type="submit">Generate Resume</button>
 
 
     </form>
-            <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
