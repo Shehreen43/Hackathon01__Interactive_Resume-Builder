@@ -5,8 +5,10 @@ const skillsSection = document.getElementById('skills');
 toggleSkillsButton?.addEventListener('click', () => {
     if (skillsSection?.style.display === 'none') {
         skillsSection.style.display = 'block';
+        toggleSkillsButton.textContent = "hide";
     } else {
         skillsSection!.style.display = 'none';
+        toggleSkillsButton.textContent = "show";
     }
 });
 // Select the profile picture and file input elements
@@ -56,8 +58,13 @@ headingColorPicker.addEventListener("input", function () {
 
 paragraphColorPicker.addEventListener("input", function () {
   const paragraphs = resumeOutput.querySelectorAll("p");
+  const listItems = resumeOutput.querySelectorAll("li"); 
+
   paragraphs.forEach((paragraph) => {
     (paragraph as HTMLElement).style.color = paragraphColorPicker.value;
+  });
+  listItems.forEach((listItem) => {
+    (listItem as HTMLElement).style.color = paragraphColorPicker.value;
   });
 });
 
@@ -266,7 +273,7 @@ document.getElementById("resumeBuilder")
 
       <div class="profile-container">
       <h1 class="editable" contenteditable="false">Resume</h1>
-        <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150">
+        <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
         <div>
        <h2><span class="editable" contenteditable="false">${name}</span></h2>
         <p><strong>About Me:</strong><span class="editable" contenteditable="false"> ${aboutMe}</span></p>
@@ -276,11 +283,11 @@ document.getElementById("resumeBuilder")
       <p><strong>Date of Birth:</strong> <span class="editable" contenteditable="false">${dob}</span></p>
       <p><strong>Gender:</strong> <span class="editable" contenteditable="false">${gender}</span></p>
       <p><strong>Nationality:</strong> <span class="editable" contenteditable="false">${nationality}</span></p>
+      <p><strong>Address:</strong><span class="editable" contenteditable="false"> ${address}</span></p>
       <hr>
       <h3>Contact Information</h3>
       <p><strong>Email:</strong> <span class="editable" contenteditable="false">${email}</span></p>
       <p><strong>Phone:</strong><span class="editable" contenteditable="false"> ${phone}</span></p>
-      <p><strong>Address:</strong><span class="editable" contenteditable="false"> ${address}</span></p>
       <hr>
       <h3>Education</h3>
       <p><ul class="editable" contenteditable="false">${educationListItems}</ul></p>
@@ -300,6 +307,7 @@ document.getElementById("resumeBuilder")
 
     const headings = resumeOutput.querySelectorAll("h2, h3");
     const paragraphs = resumeOutput.querySelectorAll("p");
+    const listItems = resumeOutput.querySelectorAll("li"); 
     const editButton = document.getElementById("editButton") as HTMLButtonElement;
     const editableSections = document.querySelectorAll(".editable");
     
@@ -338,14 +346,6 @@ document.getElementById("resumeBuilder")
       });
     });
 
-    editableSections.forEach((section) => {
-      section.addEventListener("blur", (event) => {
-        const target = event.target as HTMLElement;
-        const sectionId = target.getAttribute("data-section-id"); // Add a unique identifier if needed
-        localStorage.setItem(sectionId!, target.textContent!); // Save in local storage
-      });
-    });
-    
     headings.forEach((heading) => {
       (heading as HTMLElement).style.color = selectedHeadingColor;
     });
@@ -353,6 +353,15 @@ document.getElementById("resumeBuilder")
     paragraphs.forEach((paragraph) => {
       (paragraph as HTMLElement).style.color = selectedParagraphColor;
     });
+    listItems.forEach((item) => {
+      (item as HTMLElement).style.color = selectedParagraphColor;
+    });
+    const intervalId = setInterval(() => {
+      alert("Resume generated successfully!");
+      clearInterval(intervalId); // Stops the interval after the first alert
+    }, 1000); 
+   
+
     resumeOutput.classList.remove("hidden");
     resumeOutput.scrollIntoView({ behavior: "smooth" });
 

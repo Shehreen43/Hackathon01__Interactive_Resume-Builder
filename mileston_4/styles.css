@@ -122,7 +122,15 @@ button[type="submit"]:hover {
 }
 
 .delete-button:hover {
-    background-color: #900715;
+    background-color: #850411;
+}
+#resumeOutput h1 {
+    color: white;
+    text-shadow: 
+        -1px -1px 0 black,  /*1px to the top-left of the text.*/
+        1px -1px 0 black,   /*1px to the top-right*/
+        -1px 1px 0 black,    /*1px to the bottom-left.*/
+        1px 1px 0 black;     /*1px to the bottom-right.*/
 }
 
 button:hover,
@@ -182,17 +190,18 @@ ul li {
     color: #333;
 }
 
-  [contenteditable="true"]:hover {
-    outline: 2px dashed #0c0c0c;
+  [contenteditable="true"]:hover,
+  li:hover {
+    outline: 2px solid #0c0c0c;
     padding: 2px;
     margin-bottom: 50px;
     cursor: text;
     color:white;
-    text-shadow: 5px 10px 4px #109ef6; 
 }
 
-[contenteditable="true"]:focus {
-    outline: 2px dashed #c230ac;
+[contenteditable="true"]:focus,
+li:hover {
+    outline: 2px dashed rgb(94, 92, 92);
 }
 button {
     margin-top: 10px;

@@ -6,9 +6,11 @@ const skillsSection = document.getElementById('skills');
 toggleSkillsButton === null || toggleSkillsButton === void 0 ? void 0 : toggleSkillsButton.addEventListener('click', () => {
     if ((skillsSection === null || skillsSection === void 0 ? void 0 : skillsSection.style.display) === 'none') {
         skillsSection.style.display = 'block';
+        toggleSkillsButton.textContent = "hide";
     }
     else {
         skillsSection.style.display = 'none';
+        toggleSkillsButton.textContent = "show";
     }
 });
 // Select the profile picture and file input elements
@@ -54,8 +56,12 @@ headingColorPicker.addEventListener("input", function () {
 });
 paragraphColorPicker.addEventListener("input", function () {
     const paragraphs = resumeOutput.querySelectorAll("p");
+    const listItems = resumeOutput.querySelectorAll("li");
     paragraphs.forEach((paragraph) => {
         paragraph.style.color = paragraphColorPicker.value;
+    });
+    listItems.forEach((listItem) => {
+        listItem.style.color = paragraphColorPicker.value;
     });
 });
 // Adding dynamic delete option for education, experience, and skills
@@ -226,7 +232,7 @@ resumeForm.addEventListener("submit", (event) => {
 
       <div class="profile-container">
       <h1 class="editable" contenteditable="false">Resume</h1>
-        <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150">
+        <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
         <div>
        <h2><span class="editable" contenteditable="false">${name}</span></h2>
         <p><strong>About Me:</strong><span class="editable" contenteditable="false"> ${aboutMe}</span></p>
@@ -236,11 +242,11 @@ resumeForm.addEventListener("submit", (event) => {
       <p><strong>Date of Birth:</strong> <span class="editable" contenteditable="false">${dob}</span></p>
       <p><strong>Gender:</strong> <span class="editable" contenteditable="false">${gender}</span></p>
       <p><strong>Nationality:</strong> <span class="editable" contenteditable="false">${nationality}</span></p>
+      <p><strong>Address:</strong><span class="editable" contenteditable="false"> ${address}</span></p>
       <hr>
       <h3>Contact Information</h3>
       <p><strong>Email:</strong> <span class="editable" contenteditable="false">${email}</span></p>
       <p><strong>Phone:</strong><span class="editable" contenteditable="false"> ${phone}</span></p>
-      <p><strong>Address:</strong><span class="editable" contenteditable="false"> ${address}</span></p>
       <hr>
       <h3>Education</h3>
       <p><ul class="editable" contenteditable="false">${educationListItems}</ul></p>
@@ -258,6 +264,7 @@ resumeForm.addEventListener("submit", (event) => {
             resumeOutput.style.backgroundColor = selectedBgColor;
             const headings = resumeOutput.querySelectorAll("h2, h3");
             const paragraphs = resumeOutput.querySelectorAll("p");
+            const listItems = resumeOutput.querySelectorAll("li");
             const editButton = document.getElementById("editButton");
             const editableSections = document.querySelectorAll(".editable");
             // Variable to track whether editing is enabled
@@ -291,19 +298,19 @@ resumeForm.addEventListener("submit", (event) => {
                     console.log("New value:", target.textContent); // Save or send data if needed
                 });
             });
-            editableSections.forEach((section) => {
-                section.addEventListener("blur", (event) => {
-                    const target = event.target;
-                    const sectionId = target.getAttribute("data-section-id"); // Add a unique identifier if needed
-                    localStorage.setItem(sectionId, target.textContent); // Save in local storage
-                });
-            });
             headings.forEach((heading) => {
                 heading.style.color = selectedHeadingColor;
             });
             paragraphs.forEach((paragraph) => {
                 paragraph.style.color = selectedParagraphColor;
             });
+            listItems.forEach((item) => {
+                item.style.color = selectedParagraphColor;
+            });
+            const intervalId = setInterval(() => {
+                alert("Resume generated successfully!");
+                clearInterval(intervalId); // Stops the interval after the first alert
+            }, 1000);
             resumeOutput.classList.remove("hidden");
             resumeOutput.scrollIntoView({ behavior: "smooth" });
         }
