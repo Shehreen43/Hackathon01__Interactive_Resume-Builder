@@ -259,46 +259,40 @@ document.getElementById("resumeBuilder")
    const selectedBgColor = resumeBgColor.value;
     const selectedHeadingColor = headingColorPicker.value;
     const selectedParagraphColor = paragraphColorPicker.value;
-/*
-    resumeOutput.classList.add("hidden");
-    resumeOutput.innerHTML = "";
-    resumeOutput.style.backgroundColor = "";
-    resumeOutput.style.color = "";
-    resumeOutput.style.padding = "";
-    resumeOutput.style.margin = "";
-    resumeOutput.style.borderRadius = "";
-    resumeOutput.style.boxShadow = "";
-*/
+
     // Generate resume content
       if (resumeOutput) {
         resumeOutput.innerHTML = `
 
       <div class="profile-container">
-      <h1 style.color = "white";>Resume</h1>
+      <h1 class="editable" contenteditable="false">Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150">
         <div>
-       <h2>${name}</h2>
-        <p><strong>About Me:</strong> ${aboutMe}</p>
+       <h2><span class="editable" contenteditable="false">${name}</span></h2>
+        <p><strong>About Me:</strong><span class="editable" contenteditable="false"> ${aboutMe}</span></p>
       </div>
       <hr>
       <h3>Personal Details</h3>
-      <p><strong>Date of Birth:</strong> ${dob}</p>
-      <p><strong>Gender:</strong> ${gender}</p>
-      <p><strong>Nationality:</strong> ${nationality}</p>
+      <p><strong>Date of Birth:</strong> <span class="editable" contenteditable="false">${dob}</span></p>
+      <p><strong>Gender:</strong> <span class="editable" contenteditable="false">${gender}</span></p>
+      <p><strong>Nationality:</strong> <span class="editable" contenteditable="false">${nationality}</span></p>
       <hr>
       <h3>Contact Information</h3>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      <p><strong>Address:</strong> ${address}</p>
+      <p><strong>Email:</strong> <span class="editable" contenteditable="false">${email}</span></p>
+      <p><strong>Phone:</strong><span class="editable" contenteditable="false"> ${phone}</span></p>
+      <p><strong>Address:</strong><span class="editable" contenteditable="false"> ${address}</span></p>
       <hr>
       <h3>Education</h3>
-      <p><ul>${educationListItems}</ul></p>
+      <p><ul class="editable" contenteditable="false">${educationListItems}</ul></p>
       <hr>
       <h3>Experience</h3>
-      <p><ul>${experienceListItems}</ul></p>
+      <p><ul class="editable" contenteditable="false">${experienceListItems}</ul></p>
       <hr>
       <h3>Skills</h3>
-      <p><ul>${skillsListItems}</ul></p>
+      <p><ul class="editable" contenteditable="false">${skillsListItems}</ul></p>
+
+      <button id="editButton">Edit</button>
+      </div>
     `;
 
     // Apply selected styles
@@ -306,7 +300,52 @@ document.getElementById("resumeBuilder")
 
     const headings = resumeOutput.querySelectorAll("h2, h3");
     const paragraphs = resumeOutput.querySelectorAll("p");
+    const editButton = document.getElementById("editButton") as HTMLButtonElement;
+    const editableSections = document.querySelectorAll(".editable");
+    
+    // Variable to track whether editing is enabled
+    let isEditing = false;
+    
+    // Function to enable editing mode
+    function toggleEditMode() {
+      if (isEditing) {
+        // Disable editing mode
+        editableSections.forEach((section) => {
+          (section as HTMLElement).setAttribute("contenteditable", "false");
+          section.classList.remove("editing");
+        });
+        editButton.textContent = "Edit";
+      } else {
+        // Enable editing mode
+        editableSections.forEach((section) => {
+          (section as HTMLElement).setAttribute("contenteditable", "true");
+          section.classList.add("editing");
+        });
+        editButton.textContent = "Save";
+      }
+    
+      isEditing = !isEditing;
+    }
+    
+    // Listen for clicks on the edit button
+    editButton.addEventListener("click", toggleEditMode);
+    
+    // Save changes on blur (when the user clicks outside of the edited field)
+    editableSections.forEach((section) => {
+      section.addEventListener("blur", (event) => {
+        const target = event.target as HTMLElement;
+        console.log("New value:", target.textContent);  // Save or send data if needed
+      });
+    });
 
+    editableSections.forEach((section) => {
+      section.addEventListener("blur", (event) => {
+        const target = event.target as HTMLElement;
+        const sectionId = target.getAttribute("data-section-id"); // Add a unique identifier if needed
+        localStorage.setItem(sectionId!, target.textContent!); // Save in local storage
+      });
+    });
+    
     headings.forEach((heading) => {
       (heading as HTMLElement).style.color = selectedHeadingColor;
     });
@@ -316,6 +355,7 @@ document.getElementById("resumeBuilder")
     });
     resumeOutput.classList.remove("hidden");
     resumeOutput.scrollIntoView({ behavior: "smooth" });
+
 
 }else if(!resumeName.value || !resumeEmail.value || !resumePhone.value || !resumeAddress.value || !resumeEducation.value || !resumeExperience.value || !resumeSkills.value || !resumeAboutMe.value || !resumeDOB.value || !resumeGender.value || !resumeNationality.value){
         alert("Please fill all the fields");
