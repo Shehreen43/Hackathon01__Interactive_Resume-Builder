@@ -70,6 +70,7 @@ input[type="email"],
 input[type="tel"],
 input[type="date"],
 input[type="color"],
+input[type="file"],
 select,
 textarea {
     width: 95%;
@@ -220,6 +221,7 @@ button {
     input[type="email"],
     input[type="tel"],
     input[type="date"],
+    input[type="file"],
     select{
         width: 98%;
     }

@@ -57,6 +57,7 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="date"],
+input[type="file"],
 select,
 textarea {
     width: 95%;
@@ -100,9 +101,28 @@ input[type="text"]:hover,
 input[type="email"]:hover,
 input[type="tel"]:hover,
 input[type="date"]:hover,
+input[type="file"]:hover,
 select:hover,
 textarea:hover,
 form:hover,
 fieldset:hover {
     box-shadow: 2px 2px 10px white
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 600px) {
+
+    form {
+        width: 100%;
+    }
+
+    textarea,
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="file"],
+    select{
+        width: 98%;
+    }
 }
