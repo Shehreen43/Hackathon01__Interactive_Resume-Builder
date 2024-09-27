@@ -174,154 +174,13 @@ document.getElementById("add-skills")?.addEventListener("click", () => {
 
 // Prevent form submission if there are empty fields
 resumeForm.addEventListener("submit", (event) => {
-  event.preventDefault(); // Prevent default form submission
-
-  // Validate each field and check if all fields are valid
   const allFieldsValid = Array.from(resumeForm.querySelectorAll('input, textarea'))
     .map((field) => validateField(field as HTMLInputElement | HTMLTextAreaElement))
     .every(Boolean);
-  
+
   if (!allFieldsValid) {
     event.preventDefault(); // Prevent form submission if any field is invalid
     alert("Please fill in all the required fields.");
-    return;
-  };
-  // If all fields are valid, generate the resume
-  generateResume();
-
-  function generateResume() {
-    const userName = (document.getElementById("userName") as HTMLInputElement).value;
-    const email = (document.getElementById("email") as HTMLInputElement).value;
-    const phone = (document.getElementById("phone") as HTMLInputElement).value;
-    const address = (document.getElementById("address") as HTMLInputElement).value;
-    const aboutMe = (document.getElementById("aboutMe") as HTMLInputElement).value;
-    const dob = (document.getElementById("dob") as HTMLInputElement).value;
-    const gender = (document.getElementById("gender") as HTMLSelectElement).value;
-    const nationality = (document.getElementById("nationality") as HTMLInputElement).value;
-    const bgColor = (document.getElementById("bgColor") as HTMLInputElement).value;
-    const headingColor = (document.getElementById("headingColor") as HTMLInputElement).value;
-    const paragraphColor = (document.getElementById("paragraphColor") as HTMLInputElement).value;
-
-    let hasErrors = false; // Flag to check if there are empty fields
-
-    // Get all text areas (education, experience, skills)
-    const educationFields = document.querySelectorAll("textarea[name='education']");
-    const experienceFields = document.querySelectorAll("textarea[name='experience']");
-    const skillsFields = document.querySelectorAll("textarea[name='skills']");
-
-    // Function to validate each field and add error message if empty
-    function validateFields(fields: NodeListOf<Element>, fieldName: string) {
-      fields.forEach((field) => {
-        const textarea = field as HTMLTextAreaElement;
-        const errorMessage = textarea.nextElementSibling;
-
-        // Remove any previous error message
-        if (errorMessage && errorMessage.classList.contains("error-message")) {
-          errorMessage.remove();
-        }
-
-        // If the field is empty, display error and set hasErrors to true
-        if (!textarea.value.trim()) {
-          hasErrors = true;
-
-          const error = document.createElement("p");
-          error.classList.add("error-message");
-          error.style.color = "red";
-          error.textContent = "Oops! This field is required. Please fill it in to continue.";
-
-          // Insert error message after the textarea
-          textarea.parentNode?.insertBefore(error, textarea.nextSibling);
-        }
-      });
-    }
-
-    // Validate all fields
-    validateFields(educationFields, "education");
-    validateFields(experienceFields, "experience");
-    validateFields(skillsFields, "skills");
-
-    // Check if there are any errors before continuing
-    if (hasErrors) {
-      return; // Stop form submission if there are errors
-    }
-
-    const educationListItems = Array.from(educationFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
-    const experienceListItems = Array.from(experienceFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
-    const skillsListItems = Array.from(skillsFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
-
-
-    const resumeHTML = `<div class="profile-container">
-      <h1 class="editable" contenteditable="false">Resume</h1>
-        <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
-        <div>
-       <h2><span class="editable" contenteditable="false">${name}</span></h2>
-        <p><strong>About Me:</strong><span class="editable" contenteditable="false"> ${aboutMe}</span></p>
-      </div>
-      <hr>
-      <h3>Personal Details</h3>
-      <p><strong>Date of Birth:</strong> <span class="editable" contenteditable="false">${dob}</span></p>
-      <p><strong>Gender:</strong> <span class="editable" contenteditable="false">${gender}</span></p>
-      <p><strong>Nationality:</strong> <span class="editable" contenteditable="false">${nationality}</span></p>
-      <p><strong>Address:</strong><span class="editable" contenteditable="false"> ${address}</span></p>
-      <hr>
-      <h3>Contact Information</h3>
-      <p><strong>Email:</strong> <span class="editable" contenteditable="false">${email}</span></p>
-      <p><strong>Phone:</strong><span class="editable" contenteditable="false"> ${phone}</span></p>
-      <hr>
-      <h3>Education</h3>
-      <p><ul class="editable" contenteditable="false">${educationListItems}</ul></p>
-      <hr>
-      <h3>Experience</h3>
-      <p><ul class="editable" contenteditable="false">${experienceListItems}</ul></p>
-      <hr>
-      <h3>Skills</h3>
-      <p><ul class="editable" contenteditable="false">${skillsListItems}</ul></p>
-
-      <button id="editButton">Edit</button>
-     </div>
-    `;
-   
-    // Function to validate each field and add error message if empty
-    function validateFields(fields: NodeListOf<Element>, fieldName: string) {
-      fields.forEach((field) => {
-        const textarea = field as HTMLTextAreaElement;
-        const errorMessage = textarea.nextElementSibling;
-
-        // Remove any previous error message
-        if (errorMessage && errorMessage.classList.contains("error-message")) {
-          errorMessage.remove();
-        }
-
-        // If the field is empty, display error and set hasErrors to true
-        if (!textarea.value.trim()) {
-          hasErrors = true;
-
-          const error = document.createElement("p");
-          error.classList.add("error-message");
-          error.style.color = "red";
-          error.textContent = "Oops! This field is required. Please fill it in to continue.";
-
-          // Insert error message after the textarea
-          textarea.parentNode?.insertBefore(error, textarea.nextSibling);
-        }
-      });
-    }
-
-    // Validate all fields
-    validateFields(educationFields, "education");
-    validateFields(experienceFields, "experience");
-    validateFields(skillsFields, "skills");
-
-    // Check if there are any errors before continuing
-    if (hasErrors) {
-      return; // Stop form submission if there are errors
-    }
-
-    // Update the resumeOutput element
-  const resumeOutput = document.getElementById("resumeOutput");
-  if (resumeOutput) {
-    resumeOutput.innerHTML = resumeHTML;
-  }
   }
 });
 
@@ -329,6 +188,7 @@ resumeForm.addEventListener("submit", (event) => {
 document.getElementById("resumeBuilder")
   ?.addEventListener("submit", function (event) {
     event.preventDefault();
+
 
     const resumeName = document.getElementById("userName") as HTMLInputElement;
     const resumeEmail = document.getElementById("email") as HTMLInputElement;
@@ -344,8 +204,7 @@ document.getElementById("resumeBuilder")
     const resumeBgColor = document.getElementById("bgColor") as HTMLInputElement;
     const headingColorPicker = document.getElementById("headingColor") as HTMLInputElement;
     const paragraphColorPicker = document.getElementById("paragraphColor") as HTMLInputElement;
-    const resumeOutput = document.getElementById("resumeOutput") as HTMLInputElement;
-
+   
     let hasErrors = false; // Flag to check if there are empty fields
 
     // Get all text areas (education, experience, skills)
@@ -393,9 +252,10 @@ document.getElementById("resumeBuilder")
     const experienceListItems = Array.from(experienceFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
     const skillsListItems = Array.from(skillsFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
 
-
-        if (resumeName && resumeEmail && resumePhone && resumeAddress && resumeEducation && resumeExperience && resumeSkills && resumeAboutMe && resumeDOB && resumeGender && resumeNationality 
+        if (  resumeName && resumeEmail && resumePhone && resumeAddress && resumeEducation && resumeExperience && resumeSkills && resumeAboutMe && resumeDOB && resumeGender && resumeNationality 
+          
            ){
+
     const name = resumeName.value;
      const aboutMe = resumeAboutMe.value;
     const dob = resumeDOB.value;
@@ -408,11 +268,11 @@ document.getElementById("resumeBuilder")
     const selectedHeadingColor = headingColorPicker.value;
     const selectedParagraphColor = paragraphColorPicker.value;
 
-    // Generate resume content
-      if (resumeOutput) {
-        resumeOutput.innerHTML = `
-
-      <div class="profile-container">
+     // Generate resume content
+   
+    if (resumeOutput) {
+      resumeOutput.innerHTML = `
+<div class="profile-container">
       <h1 class="editable" contenteditable="false">Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
         <div>
@@ -441,52 +301,117 @@ document.getElementById("resumeBuilder")
 
       <button id="editButton">Edit</button>
       </div>
-    `;
+    `; 
+    // Apply selected styles
+    resumeOutput.style.backgroundColor = selectedBgColor;
 
-    let hasErrors = false; // Flag to check if there are empty fields
-
-    // Get all text areas (education, experience, skills)
-    const educationFields = document.querySelectorAll("textarea[name='education']");
-    const experienceFields = document.querySelectorAll("textarea[name='experience']");
-    const skillsFields = document.querySelectorAll("textarea[name='skills']");
-
-    // Function to validate each field and add error message if empty
-    function validateFields(fields: NodeListOf<Element>, fieldName: string) {
-      fields.forEach((field) => {
-        const textarea = field as HTMLTextAreaElement;
-        const errorMessage = textarea.nextElementSibling;
-
-        // Remove any previous error message
-        if (errorMessage && errorMessage.classList.contains("error-message")) {
-          errorMessage.remove();
-        }
-
-        // If the field is empty, display error and set hasErrors to true
-        if (!textarea.value.trim()) {
-          hasErrors = true;
-
-          const error = document.createElement("p");
-          error.classList.add("error-message");
-          error.style.color = "red";
-          error.textContent = "Oops! This field is required. Please fill it in to continue.";
-
-          // Insert error message after the textarea
-          textarea.parentNode?.insertBefore(error, textarea.nextSibling);
-        }
+    const headings = resumeOutput.querySelectorAll("h2, h3");
+    const paragraphs = resumeOutput.querySelectorAll("p");
+    const listItems = resumeOutput.querySelectorAll("li"); 
+    const editButton = document.getElementById("editButton") as HTMLButtonElement;
+    const editableSections = document.querySelectorAll(".editable");
+    
+    // Variable to track whether editing is enabled
+    let isEditing = false;
+    
+    // Function to enable editing mode
+    function toggleEditMode() {
+      if (isEditing) {
+        // Disable editing mode
+        editableSections.forEach((section) => {
+          (section as HTMLElement).setAttribute("contenteditable", "false");
+          section.classList.remove("editing");
+        });
+        editButton.textContent = "Edit";
+      } else {
+        // Enable editing mode
+        editableSections.forEach((section) => {
+          (section as HTMLElement).setAttribute("contenteditable", "true");
+          section.classList.add("editing");
+        });
+        editButton.textContent = "Save";
+      }
+    
+      isEditing = !isEditing;
+    }
+    
+    // Listen for clicks on the edit button
+    editButton.addEventListener("click", toggleEditMode);
+    
+    // Save changes on blur (when the user clicks outside of the edited field)
+    editableSections.forEach((section) => {
+      section.addEventListener("blur", (event) => {
+        const target = event.target as HTMLElement;
+        console.log("New value:", target.textContent);  // Save or send data if needed
       });
-    }
+    });
 
-    // Validate all fields
-    validateFields(educationFields, "education");
-    validateFields(experienceFields, "experience");
-    validateFields(skillsFields, "skills");
+    headings.forEach((heading) => {
+      (heading as HTMLElement).style.color = selectedHeadingColor;
+    });
 
-    // Check if there are any errors before continuing
-    if (hasErrors) {
-      return; // Stop form submission if there are errors
-    }
+    paragraphs.forEach((paragraph) => {
+      (paragraph as HTMLElement).style.color = selectedParagraphColor;
+    });
+    listItems.forEach((item) => {
+      (item as HTMLElement).style.color = selectedParagraphColor;
+    });
+    const intervalId = setInterval(() => {
+      alert("Resume generated successfully!");
+      clearInterval(intervalId); // Stops the interval after the first alert
+    }, 1000); 
+     
+   resumeOutput.classList.remove("hidden");
+    resumeOutput.scrollIntoView({ behavior: "smooth" });
 
-    const educationListItems = Array.from(educationFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
-    const experienceListItems = Array.from(experienceFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
-    const skillsListItems = Array.from(skillsFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
 
+}else if(!resumeName.value || !resumeEmail.value || !resumePhone.value || !resumeAddress.value || !resumeEducation.value || !resumeExperience.value || !resumeSkills.value || !resumeAboutMe.value || !resumeDOB.value || !resumeGender.value || !resumeNationality.value){
+        alert("Please fill all the fields");
+        return;
+      }
+  }});
+
+  
+
+
+   /*  
+Generate a unique URL for each resume based on the user’s username, and allow the resume to be 
+shared and downloaded. 
+*/
+function generateUniqueURL(username: string): string {
+  const uniqueString = Date.now().toString(36) + Math.random().toString(36);
+  return `${username}.${uniqueString}.vercel.app/resume`;
+}
+
+generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
+
+const shareButton = document.getElementById("shareButton");
+shareButton?.addEventListener("click", () => {
+  const resumeOutput = document.getElementById("resumeOutput");
+  const resumeHTML = resumeOutput?.innerHTML || "";
+  const blob = new Blob([resumeHTML], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  const uniqueURL = generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${uniqueURL}.html`;
+  link.click();
+  URL.revokeObjectURL(url);
+});
+
+const downloadbtn = document.getElementById("downloadButton") as HTMLButtonElement
+downloadbtn?.addEventListener("click", () => {
+  const resumeOutput = document.getElementById("resumeOutput");
+  const resumeHTML = resumeOutput?.innerHTML || "";
+  const blob = new Blob([resumeHTML], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "resume.html";
+  a.click();
+  URL.revokeObjectURL(url);
+  resumeOutput?.classList.add("hidden");
+});
+ 
+   
+   

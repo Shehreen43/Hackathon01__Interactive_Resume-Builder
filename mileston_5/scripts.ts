@@ -221,10 +221,8 @@ document.getElementById("resumeBuilder")
         // Remove any previous error message
         if (errorMessage && errorMessage.classList.contains("error-message")) {
           errorMessage.remove();
-        }
-
-        // If the field is empty, display error and set hasErrors to true
-        if (!textarea.value.trim()) {
+        }else if (!textarea.value.trim()) {
+          // If the field is empty, display error and set hasErrors to true
           hasErrors = true;
 
           const error = document.createElement("p");
@@ -371,3 +369,5 @@ document.getElementById("resumeBuilder")
         return;
       }
   }})
+
+

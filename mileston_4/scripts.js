@@ -1,9 +1,5 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-var _a, _b, _c, _d, _e;
-Object.defineProperty(exports, "__esModule", { value: true });
+var _a, _b, _c, _d;
 // script.ts
 const toggleSkillsButton = document.getElementById('toggle-skills');
 const skillsSection = document.getElementById('skills');
@@ -179,7 +175,6 @@ resumeForm.addEventListener("submit", (event) => {
     const resumeBgColor = document.getElementById("bgColor");
     const headingColorPicker = document.getElementById("headingColor");
     const paragraphColorPicker = document.getElementById("paragraphColor");
-    const resumeOutput = document.getElementById("resumeOutput");
     let hasErrors = false; // Flag to check if there are empty fields
     // Get all text areas (education, experience, skills)
     const educationFields = document.querySelectorAll("textarea[name='education']");
@@ -233,8 +228,7 @@ resumeForm.addEventListener("submit", (event) => {
         // Generate resume content
         if (resumeOutput) {
             resumeOutput.innerHTML = `
-
-      <div class="profile-container">
+<div class="profile-container">
       <h1 class="editable" contenteditable="false">Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
         <div>
@@ -324,35 +318,38 @@ resumeForm.addEventListener("submit", (event) => {
         }
     }
 });
-// When generating the resume, use the username to create a unique URL
-const resumeName = (_e = document.getElementById("userName")) === null || _e === void 0 ? void 0 : _e.value;
-const resumeUrl = `${window.location.origin}/resume/${resumeName}`; // Example: yoursite.com/resume/username
-// Display or copy the URL to clipboard
-const shareButton = document.getElementById("shareLink");
-shareButton.addEventListener("click", () => {
-    navigator.clipboard.writeText(resumeUrl).then(() => {
-        const shareMessage = document.getElementById("shareMessage");
-        shareMessage.textContent = "Resume link copied!";
-        shareMessage.classList.remove("hidden");
-        setTimeout(() => shareMessage.classList.add("hidden"), 3000); // Hide after 3 seconds
-    });
+/*
+Generate a unique URL for each resume based on the user’s username, and allow the resume to be
+shared and downloaded.
+*/
+function generateUniqueURL(username) {
+    const uniqueString = Date.now().toString(36) + Math.random().toString(36);
+    return `${username}.${uniqueString}.vercel.app/resume`;
+}
+generateUniqueURL(document.getElementById("userName").value);
+const shareButton = document.getElementById("shareButton");
+shareButton === null || shareButton === void 0 ? void 0 : shareButton.addEventListener("click", () => {
+    const resumeOutput = document.getElementById("resumeOutput");
+    const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
+    const blob = new Blob([resumeHTML], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const uniqueURL = generateUniqueURL(document.getElementById("userName").value);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${uniqueURL}.html`;
+    link.click();
+    URL.revokeObjectURL(url);
 });
-const jspdf_1 = __importDefault(require("jspdf"));
-const downloadButton = document.getElementById("downloadPDF");
-downloadButton.addEventListener("click", function () {
-    var _a;
-    const resumeElement = document.getElementById("resumeOutput");
-    const userName = (_a = document.getElementById("userName")) === null || _a === void 0 ? void 0 : _a.value;
-    const doc = new jspdf_1.default('p', 'pt', 'a4');
-    // Add HTML content to the PDF
-    doc.html(resumeElement, {
-        callback: function (doc) {
-            doc.save(`${userName}-resume.pdf`); // Save PDF file with username
-        },
-        x: 10,
-        y: 10,
-        html2canvas: {
-            scale: 0.7 // Adjust for better quality
-        }
-    });
+const downloadbtn = document.getElementById("downloadButton");
+downloadbtn === null || downloadbtn === void 0 ? void 0 : downloadbtn.addEventListener("click", () => {
+    const resumeOutput = document.getElementById("resumeOutput");
+    const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
+    const blob = new Blob([resumeHTML], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "resume.html";
+    a.click();
+    URL.revokeObjectURL(url);
+    resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.classList.add("hidden");
 });
