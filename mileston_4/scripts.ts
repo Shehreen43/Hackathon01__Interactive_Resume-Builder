@@ -414,7 +414,7 @@ downloadbtn?.addEventListener("click", () => {
   a.download = "resume.html";
   a.click();
   URL.revokeObjectURL(url);
-  resumeOutput?.classList.add("hidden");
+  
 });
  
    

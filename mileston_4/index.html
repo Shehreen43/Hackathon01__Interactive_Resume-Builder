@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume Builder</title>
   <link rel="stylesheet" href="styles.css">
-</head>
-
+ </head>
 <body>
-  <h1> Interactive And Dynamic Resume Builder</h1>
+  <h1>Interactive And Dynamic Resume Builder</h1>
 
   <label for="profilePictureInput"><img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture" title="Upload your profile picture."></label>
   <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
@@ -100,17 +98,11 @@
   </form>
 
   <div id="resumeOutput"></div>
-
-<!-- Button to share the resume -->
-<button id="shareLink">Copy Resume Link</button> 
-<p id="shareMessage" class="hidden">Resume link copied!</p> 
-
-<!-- Button to download the resume -->
-<button id="downloadPDF">Download PDF</button>
-
- 
-
+   
+  <div id="center">
+  <button id="shareButton">Share Resume</button>
+  <button id="downloadPDF">Download PDF</button>
+  </div>
   <script src="scripts.js"></script>
 </body>
-
 </html>

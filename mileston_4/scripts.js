@@ -175,6 +175,7 @@ resumeForm.addEventListener("submit", (event) => {
     const resumeBgColor = document.getElementById("bgColor");
     const headingColorPicker = document.getElementById("headingColor");
     const paragraphColorPicker = document.getElementById("paragraphColor");
+    const resumeOutput = document.getElementById("resumeOutput");
     let hasErrors = false; // Flag to check if there are empty fields
     // Get all text areas (education, experience, skills)
     const educationFields = document.querySelectorAll("textarea[name='education']");
@@ -228,7 +229,8 @@ resumeForm.addEventListener("submit", (event) => {
         // Generate resume content
         if (resumeOutput) {
             resumeOutput.innerHTML = `
-<div class="profile-container">
+
+      <div class="profile-container">
       <h1 class="editable" contenteditable="false">Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
         <div>
@@ -318,39 +320,43 @@ resumeForm.addEventListener("submit", (event) => {
         }
     }
 });
-//
-/*
-// Generate a unique URL for each resume based on the user’s username, and allow the resume to be
-// shared and downloaded.
-// */
-// function generateUniqueURL(username: string): string {
-//   const uniqueString = Date.now().toString(36) + Math.random().toString(36);
-//   return `${username}.${uniqueString}.vercel.app/resume`;
-// }
-// generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
-// const shareButton = document.getElementById("shareButton");
-// shareButton?.addEventListener("click", () => {
-//   const resumeOutput = document.getElementById("resumeOutput");
-//   const resumeHTML = resumeOutput?.innerHTML || "";
-//   const blob = new Blob([resumeHTML], { type: "text/html" });
-//   const url = URL.createObjectURL(blob);
-//   const uniqueURL = generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
-//   const link = document.createElement("a");
-//   link.href = url;
-//   link.download = `${uniqueURL}.html`;
-//   link.click();
-//   URL.revokeObjectURL(url);
-// });
-// const downloadbtn = document.getElementById("downloadButton") as HTMLButtonElement
-// downloadbtn?.addEventListener("click", () => {
-//   const resumeOutput = document.getElementById("resumeOutput");
-//   const resumeHTML = resumeOutput?.innerHTML || "";
-//   const blob = new Blob([resumeHTML], { type: "text/html" });
-//   const url = URL.createObjectURL(blob);
-//   const a = document.createElement("a");
-//   a.href = url;
-//   a.download = "resume.html";
-//   a.click();
-//   URL.revokeObjectURL(url);
-//   resumeOutput?.classList.add("hidden");
-// });
+/* Objective:
+Generate a unique URL for each resume based on the user’s username, and allow the resume to be
+shared and downloaded.
+Requirements:
+ When a user creates a resume, generate a unique URL, for example:
+username.vercel.app/resume.
+ Provide options for users to share their resume via a link and download the resume as a
+PDF.
+*/
+function generateUniqueURL(username) {
+    const uniqueString = Date.now().toString(36) + Math.random().toString(36);
+    return `${username}.${uniqueString}.vercel.app/resume`;
+}
+generateUniqueURL(document.getElementById("userName").value);
+const shareButton = document.getElementById("shareButton");
+shareButton === null || shareButton === void 0 ? void 0 : shareButton.addEventListener("click", () => {
+    const resumeOutput = document.getElementById("resumeOutput");
+    const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
+    const blob = new Blob([resumeHTML], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const uniqueURL = generateUniqueURL(document.getElementById("userName").value);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${uniqueURL}.html`;
+    link.click();
+    URL.revokeObjectURL(url);
+});
+const downloadbtn = document.getElementById("downloadButton");
+downloadbtn === null || downloadbtn === void 0 ? void 0 : downloadbtn.addEventListener("click", () => {
+    const resumeOutput = document.getElementById("resumeOutput");
+    const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
+    const blob = new Blob([resumeHTML], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "resume.html";
+    a.click();
+    URL.revokeObjectURL(url);
+    resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.classList.add("hidden");
+});
