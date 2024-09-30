@@ -318,38 +318,39 @@ resumeForm.addEventListener("submit", (event) => {
         }
     }
 });
+//
 /*
-Generate a unique URL for each resume based on the user’s username, and allow the resume to be
-shared and downloaded.
-*/
-function generateUniqueURL(username) {
-    const uniqueString = Date.now().toString(36) + Math.random().toString(36);
-    return `${username}.${uniqueString}.vercel.app/resume`;
-}
-generateUniqueURL(document.getElementById("userName").value);
-const shareButton = document.getElementById("shareButton");
-shareButton === null || shareButton === void 0 ? void 0 : shareButton.addEventListener("click", () => {
-    const resumeOutput = document.getElementById("resumeOutput");
-    const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
-    const blob = new Blob([resumeHTML], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const uniqueURL = generateUniqueURL(document.getElementById("userName").value);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${uniqueURL}.html`;
-    link.click();
-    URL.revokeObjectURL(url);
-});
-const downloadbtn = document.getElementById("downloadButton");
-downloadbtn === null || downloadbtn === void 0 ? void 0 : downloadbtn.addEventListener("click", () => {
-    const resumeOutput = document.getElementById("resumeOutput");
-    const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
-    const blob = new Blob([resumeHTML], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "resume.html";
-    a.click();
-    URL.revokeObjectURL(url);
-    resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.classList.add("hidden");
-});
+// Generate a unique URL for each resume based on the user’s username, and allow the resume to be
+// shared and downloaded.
+// */
+// function generateUniqueURL(username: string): string {
+//   const uniqueString = Date.now().toString(36) + Math.random().toString(36);
+//   return `${username}.${uniqueString}.vercel.app/resume`;
+// }
+// generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
+// const shareButton = document.getElementById("shareButton");
+// shareButton?.addEventListener("click", () => {
+//   const resumeOutput = document.getElementById("resumeOutput");
+//   const resumeHTML = resumeOutput?.innerHTML || "";
+//   const blob = new Blob([resumeHTML], { type: "text/html" });
+//   const url = URL.createObjectURL(blob);
+//   const uniqueURL = generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
+//   const link = document.createElement("a");
+//   link.href = url;
+//   link.download = `${uniqueURL}.html`;
+//   link.click();
+//   URL.revokeObjectURL(url);
+// });
+// const downloadbtn = document.getElementById("downloadButton") as HTMLButtonElement
+// downloadbtn?.addEventListener("click", () => {
+//   const resumeOutput = document.getElementById("resumeOutput");
+//   const resumeHTML = resumeOutput?.innerHTML || "";
+//   const blob = new Blob([resumeHTML], { type: "text/html" });
+//   const url = URL.createObjectURL(blob);
+//   const a = document.createElement("a");
+//   a.href = url;
+//   a.download = "resume.html";
+//   a.click();
+//   URL.revokeObjectURL(url);
+//   resumeOutput?.classList.add("hidden");
+// });

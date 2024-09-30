@@ -189,7 +189,6 @@ document.getElementById("resumeBuilder")
   ?.addEventListener("submit", function (event) {
     event.preventDefault();
 
-
     const resumeName = document.getElementById("userName") as HTMLInputElement;
     const resumeEmail = document.getElementById("email") as HTMLInputElement;
     const resumePhone = document.getElementById("phone") as HTMLInputElement;
@@ -204,7 +203,8 @@ document.getElementById("resumeBuilder")
     const resumeBgColor = document.getElementById("bgColor") as HTMLInputElement;
     const headingColorPicker = document.getElementById("headingColor") as HTMLInputElement;
     const paragraphColorPicker = document.getElementById("paragraphColor") as HTMLInputElement;
-   
+    const resumeOutput = document.getElementById("resumeOutput") as HTMLInputElement;
+
     let hasErrors = false; // Flag to check if there are empty fields
 
     // Get all text areas (education, experience, skills)
@@ -252,10 +252,9 @@ document.getElementById("resumeBuilder")
     const experienceListItems = Array.from(experienceFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
     const skillsListItems = Array.from(skillsFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
 
-        if (  resumeName && resumeEmail && resumePhone && resumeAddress && resumeEducation && resumeExperience && resumeSkills && resumeAboutMe && resumeDOB && resumeGender && resumeNationality 
-          
-           ){
 
+        if (resumeName && resumeEmail && resumePhone && resumeAddress && resumeEducation && resumeExperience && resumeSkills && resumeAboutMe && resumeDOB && resumeGender && resumeNationality 
+           ){
     const name = resumeName.value;
      const aboutMe = resumeAboutMe.value;
     const dob = resumeDOB.value;
@@ -268,11 +267,11 @@ document.getElementById("resumeBuilder")
     const selectedHeadingColor = headingColorPicker.value;
     const selectedParagraphColor = paragraphColorPicker.value;
 
-     // Generate resume content
-   
-    if (resumeOutput) {
-      resumeOutput.innerHTML = `
-<div class="profile-container">
+    // Generate resume content
+      if (resumeOutput) {
+        resumeOutput.innerHTML = `
+
+      <div class="profile-container">
       <h1 class="editable" contenteditable="false">Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
         <div>
@@ -301,7 +300,8 @@ document.getElementById("resumeBuilder")
 
       <button id="editButton">Edit</button>
       </div>
-    `; 
+    `;
+
     // Apply selected styles
     resumeOutput.style.backgroundColor = selectedBgColor;
 
@@ -360,8 +360,9 @@ document.getElementById("resumeBuilder")
       alert("Resume generated successfully!");
       clearInterval(intervalId); // Stops the interval after the first alert
     }, 1000); 
-     
-   resumeOutput.classList.remove("hidden");
+   
+
+    resumeOutput.classList.remove("hidden");
     resumeOutput.scrollIntoView({ behavior: "smooth" });
 
 
@@ -369,14 +370,17 @@ document.getElementById("resumeBuilder")
         alert("Please fill all the fields");
         return;
       }
-  }});
-
-  
+  }})
 
 
-   /*  
+   /* Objective: 
 Generate a unique URL for each resume based on the user’s username, and allow the resume to be 
 shared and downloaded. 
+Requirements: 
+ When a user creates a resume, generate a unique URL, for example: 
+username.vercel.app/resume. 
+ Provide options for users to share their resume via a link and download the resume as a 
+PDF.
 */
 function generateUniqueURL(username: string): string {
   const uniqueString = Date.now().toString(36) + Math.random().toString(36);
