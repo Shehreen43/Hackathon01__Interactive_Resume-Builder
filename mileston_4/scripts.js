@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var _a, _b, _c, _d;
+Object.defineProperty(exports, "__esModule", { value: true });
 // script.ts
 const toggleSkillsButton = document.getElementById('toggle-skills');
 const skillsSection = document.getElementById('skills');
@@ -326,8 +330,8 @@ function generateUniqueURL(username) {
     return `${username}.${uniqueString}.vercel.app/resume`;
 }
 generateUniqueURL(document.getElementById("userName").value);
-// const downloadResume = document.getElementById("downloadButton");
-// downloadResume?.addEventListener("click", () => {
+// const shareButtons = document.getElementById("downloadPDF");
+// shareButtons?.addEventListener("click", () => {
 //   const resumeOutput = document.getElementById("resumeOutput");
 //   const resumeHTML = resumeOutput?.innerHTML || "";
 //   const blob = new Blob([resumeHTML], { type: "text/html" });
@@ -339,18 +343,24 @@ generateUniqueURL(document.getElementById("userName").value);
 //   link.click();
 //   URL.revokeObjectURL(url);
 // });
-const downloadbtn = document.getElementById("downloadButton");
-downloadbtn === null || downloadbtn === void 0 ? void 0 : downloadbtn.addEventListener("click", () => {
+// @ts-ignore
+const html2pdf_js_1 = __importDefault(require("html2pdf.js"));
+const shareButtons = document.getElementById("downloadPDF");
+shareButtons === null || shareButtons === void 0 ? void 0 : shareButtons.addEventListener("click", () => {
     const resumeOutput = document.getElementById("resumeOutput");
-    const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
-    const blob = new Blob([resumeHTML], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "resume.html";
-    a.click();
-    URL.revokeObjectURL(url);
+    if (resumeOutput) {
+        const uniqueURL = generateUniqueURL(document.getElementById("userName").value);
+        const opt = {
+            margin: 1,
+            filename: `${uniqueURL}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        (0, html2pdf_js_1.default)().from(resumeOutput).set(opt).save();
+    }
 });
+//
 const shareButton = document.getElementById('shareButton');
 shareButton.addEventListener("click", () => {
     const username = document.getElementById("userName").value;
@@ -359,6 +369,10 @@ shareButton.addEventListener("click", () => {
     navigator.clipboard.writeText(uniqueURL).then(() => {
         // Provide feedback to the user
         shareButton.textContent = "URL Copied!";
+        const intervalId = setInterval(() => {
+            alert("your resume link copied successfully!");
+            clearInterval(intervalId); // Stops the interval after the first alert
+        }, 1000);
         // Reset the button text after a short delay
         setTimeout(() => {
             shareButton.textContent = "Share Resume";

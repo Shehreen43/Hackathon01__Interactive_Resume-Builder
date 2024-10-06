@@ -1,4 +1,6 @@
 // script.ts
+// @ts-ignore
+import html2pdf from 'html2pdf.js';
 const toggleSkillsButton = document.getElementById('toggle-skills');
 const skillsSection = document.getElementById('skills');
 
@@ -381,8 +383,8 @@ function generateUniqueURL(username: string): string {
 
 generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
 
-// const downloadResume = document.getElementById("downloadButton");
-// downloadResume?.addEventListener("click", () => {
+// const shareButtons = document.getElementById("downloadPDF");
+// shareButtons?.addEventListener("click", () => {
 //   const resumeOutput = document.getElementById("resumeOutput");
 //   const resumeHTML = resumeOutput?.innerHTML || "";
 //   const blob = new Blob([resumeHTML], { type: "text/html" });
@@ -395,21 +397,26 @@ generateUniqueURL((document.getElementById("userName") as HTMLInputElement).valu
 //   URL.revokeObjectURL(url);
 // });
 
-const downloadbtn = document.getElementById("downloadButton") as HTMLButtonElement
-downloadbtn?.addEventListener("click", () => {
+
+const shareButtons = document.getElementById("downloadPDF");
+shareButtons?.addEventListener("click", () => {
   const resumeOutput = document.getElementById("resumeOutput");
-  const resumeHTML = resumeOutput?.innerHTML || "";
-  const blob = new Blob([resumeHTML], { type: "text/html" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "resume.html";
-  a.click();
-  URL.revokeObjectURL(url);
-  
+  if (resumeOutput) {
+    const uniqueURL = generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
+    
+    const opt = {
+      margin:       1,
+      filename:     `${uniqueURL}.pdf`,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().from(resumeOutput).set(opt).save();
+  }
 });
- 
-   
+
+//
 const shareButton = document.getElementById('shareButton') as HTMLButtonElement;
 
 shareButton.addEventListener("click", () => {
@@ -421,6 +428,10 @@ shareButton.addEventListener("click", () => {
     // Provide feedback to the user
     shareButton.textContent = "URL Copied!";
     
+    const intervalId = setInterval(() => {
+      alert("your resume link copied successfully!");
+      clearInterval(intervalId); // Stops the interval after the first alert
+    }, 1000); 
     // Reset the button text after a short delay
     setTimeout(() => {
       shareButton.textContent = "Share Resume";
