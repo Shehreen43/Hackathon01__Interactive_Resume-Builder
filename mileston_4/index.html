@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume Builder</title>
   <link rel="stylesheet" href="styles.css">
- </head>
+</head>
+
 <body>
-  <h1>Interactive And Dynamic Resume Builder</h1>
+  <h1> Editable Resume Builder By <br><span style="color: white;">Shehreen Arshad</span></h1>
 
-  <label for="profilePictureInput"><img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture" title="Upload your profile picture."></label>
+  <label for="profilePictureInput"><img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture"
+      title="Upload your profile picture."></label>
   <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
-
 
   <form id="resumeBuilder">
     <fieldset>
       <legend>Personal Information</legend>
-
-      <label for="user_url"><strong>Resume URL:</strong></label>
-      <input type="text" id="user_url" name="user_url" required spellcheck="false" placeholder="Enter your data url.">
-
       <label for="userName"><strong>Name:</strong></label>
-      <input type="text" id="userName" name="userName" required spellcheck="false" placeholder="Enter your full name.">
+      <input type="text" id="userName" name="userName" required spellcheck="false" placeholder="Enter your name.">
 
       <label for="aboutMe"><strong>About Me:</strong></label>
       <textarea id="aboutMe" name="aboutMe" placeholder="Write a short bio about yourself." required></textarea>
@@ -48,7 +46,7 @@
       <label for="address"><strong>Address:</strong></label>
       <input type="text" id="address" name="address" placeholder="Enter your full address." required>
 
-       </fieldset>
+    </fieldset>
 
     <fieldset>
       <legend>Education</legend>
@@ -98,11 +96,8 @@
   </form>
 
   <div id="resumeOutput"></div>
-   
-  <div id="center">
-  <button id="shareButton">Share Resume</button>
-  <button id="downloadPDF">Download PDF</button>
-  </div>
+
   <script src="scripts.js"></script>
 </body>
+
 </html>

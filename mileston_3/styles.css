@@ -33,13 +33,17 @@ fieldset {
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
-    background-color: rgb(15, 111, 111);
+    font-size: 16px;
+    background-color: transparent
+        /* rgb(15, 111, 111);*/
+
 }
 
 #toggle-skills,
 legend {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
+    font-size: 20px;
     text-align: center;
     color: white;
     text-shadow: 2px 2px 5px black;
@@ -50,14 +54,15 @@ legend {
 }
 
 button {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    text-align: center;
+    background-color: #60c1e4;
     color: white;
-    background: transparent;
+    text-align: center;
     border: none;
-    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
 }
 
 label {
@@ -70,14 +75,14 @@ input[type="email"],
 input[type="tel"],
 input[type="date"],
 input[type="color"],
-input[type="file"],
 select,
 textarea {
-    width: 95%;
+    width: 100%;
     padding: 8px;
     margin: 5px 0 10px;
-    border: 1px solid #60c1e4;
-    border-radius: 20px;
+    border: 2px solid #60c1e4;
+    ;
+    border-radius: 5px;
     box-sizing: border-box;
     background: transparent;
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
@@ -126,6 +131,21 @@ button[type="submit"]:hover {
     background-color: #900715;
 }
 
+#resumeOutput h1 {
+    color: white;
+    text-transform: capitalize;
+    text-shadow:
+        -1px -1px 0 black,
+        /*1px to the top-left of the text.*/
+        1px -1px 0 black,
+        /*1px to the top-right*/
+        -1px 1px 0 black,
+        /*1px to the bottom-left.*/
+        1px 1px 0 black;
+    /*1px to the bottom-right.*/
+
+}
+
 button:hover,
 input:hover,
 select:hover,
@@ -144,6 +164,7 @@ fieldset:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     color: black;
     text-align: left;
+    overflow-wrap: break-word;
     margin-top: 3%;
 }
 
@@ -197,7 +218,7 @@ ul li {
     input[type="tel"],
     input[type="date"],
     input[type="file"],
-    select{
+    select {
         width: 98%;
     }
 }

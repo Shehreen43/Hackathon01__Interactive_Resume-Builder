@@ -191,8 +191,8 @@ resumeForm.addEventListener("submit", (event) => {
             if (errorMessage && errorMessage.classList.contains("error-message")) {
                 errorMessage.remove();
             }
-            else if (!textarea.value.trim()) {
-                // If the field is empty, display error and set hasErrors to true
+            // If the field is empty, display error and set hasErrors to true
+            if (!textarea.value.trim()) {
                 hasErrors = true;
                 const error = document.createElement("p");
                 error.classList.add("error-message");
@@ -231,7 +231,7 @@ resumeForm.addEventListener("submit", (event) => {
             resumeOutput.innerHTML = `
 
       <div class="profile-container">
-      <h1 class="editable" contenteditable="false">Resume</h1>
+      <h1 class="editable" contenteditable="false">${name}'s Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
         <div>
        <h2><span class="editable" contenteditable="false">${name}</span></h2>
@@ -292,12 +292,12 @@ resumeForm.addEventListener("submit", (event) => {
             // Listen for clicks on the edit button
             editButton.addEventListener("click", toggleEditMode);
             // Save changes on blur (when the user clicks outside of the edited field)
-            editableSections.forEach((section) => {
-                section.addEventListener("blur", (event) => {
-                    const target = event.target;
-                    console.log("New value:", target.textContent); // Save or send data if needed
-                });
-            });
+            // editableSections.forEach((section) => {
+            //   section.addEventListener("blur", (event) => {
+            //     const target = event.target as HTMLElement;
+            //     console.log("New value:", target.textContent);  // Save or send data if needed
+            //   });
+            // });
             headings.forEach((heading) => {
                 heading.style.color = selectedHeadingColor;
             });
@@ -320,22 +320,14 @@ resumeForm.addEventListener("submit", (event) => {
         }
     }
 });
-/* Objective:
-Generate a unique URL for each resume based on the user’s username, and allow the resume to be
-shared and downloaded.
-Requirements:
- When a user creates a resume, generate a unique URL, for example:
-username.vercel.app/resume.
- Provide options for users to share their resume via a link and download the resume as a
-PDF.
-*/
+//
 function generateUniqueURL(username) {
     const uniqueString = Date.now().toString(36) + Math.random().toString(36);
     return `${username}.${uniqueString}.vercel.app/resume`;
 }
 generateUniqueURL(document.getElementById("userName").value);
-const shareButton = document.getElementById("shareButton");
-shareButton === null || shareButton === void 0 ? void 0 : shareButton.addEventListener("click", () => {
+const shareButtons = document.getElementById("downloadPDF");
+shareButtons === null || shareButtons === void 0 ? void 0 : shareButtons.addEventListener("click", () => {
     const resumeOutput = document.getElementById("resumeOutput");
     const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
     const blob = new Blob([resumeHTML], { type: "text/html" });
@@ -347,16 +339,23 @@ shareButton === null || shareButton === void 0 ? void 0 : shareButton.addEventLi
     link.click();
     URL.revokeObjectURL(url);
 });
-const downloadbtn = document.getElementById("downloadButton");
-downloadbtn === null || downloadbtn === void 0 ? void 0 : downloadbtn.addEventListener("click", () => {
-    const resumeOutput = document.getElementById("resumeOutput");
-    const resumeHTML = (resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.innerHTML) || "";
-    const blob = new Blob([resumeHTML], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "resume.html";
-    a.click();
-    URL.revokeObjectURL(url);
-    resumeOutput === null || resumeOutput === void 0 ? void 0 : resumeOutput.classList.add("hidden");
+//
+const shareButton = document.getElementById('shareButton');
+shareButton.addEventListener("click", () => {
+    const username = document.getElementById("userName").value;
+    const uniqueURL = generateUniqueURL(username);
+    // Copy the URL to clipboard
+    navigator.clipboard.writeText(uniqueURL).then(() => {
+        const intervalId = setInterval(() => {
+            alert("your resume link copied successfully!");
+            clearInterval(intervalId); // Stops the interval after the first alert
+        }, 1000);
+        // Reset the button text after a short delay
+        setTimeout(() => {
+            shareButton.textContent = "Share Resume";
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        shareButton.textContent = "Failed to copy URL";
+    });
 });

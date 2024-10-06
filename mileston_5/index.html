@@ -9,15 +9,22 @@
 </head>
 
 <body>
-  <h1> Interactive And Dynamic Resume Builder</h1>
+  <h1>Unique Path and Shareable Link Builder By <br><span style="color: white;">Shehreen Arshad</span></h1>
 
-  <img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture">
+  <label for="profilePictureInput"><img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture"
+      title="Upload your profile picture."></label>
+  <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+
 
   <form id="resumeBuilder">
     <fieldset>
       <legend>Personal Information</legend>
+
+      <label for="user_url"><strong>Resume URL:</strong></label>
+      <input type="text" id="user_url" name="user_url" required spellcheck="false" placeholder="Enter your data url.">
+
       <label for="userName"><strong>Name:</strong></label>
-      <input type="text" id="userName" name="userName" required spellcheck="false" placeholder="Enter your name.">
+      <input type="text" id="userName" name="userName" required spellcheck="false" placeholder="Enter your full name.">
 
       <label for="aboutMe"><strong>About Me:</strong></label>
       <textarea id="aboutMe" name="aboutMe" placeholder="Write a short bio about yourself." required></textarea>
@@ -44,8 +51,6 @@
       <label for="address"><strong>Address:</strong></label>
       <input type="text" id="address" name="address" placeholder="Enter your full address." required>
 
-      <label for="profilePictureInput">Upload your picture:</label>
-      <input type="file" id="profilePictureInput" accept="image/*">
     </fieldset>
 
     <fieldset>
@@ -97,6 +102,10 @@
 
   <div id="resumeOutput"></div>
 
+  <div id="center">
+    <button id="shareButton">Share Resume</button>
+    <button id="downloadPDF">Download PDF</button>
+  </div>
   <script src="scripts.js"></script>
 </body>
 

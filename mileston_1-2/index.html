@@ -10,9 +10,12 @@
 
 <body>
 
-    <h1> Static Interactive Resume Builder By Shehreen Arshad</h1>
+    <h1>Static Interactive Resume Builder By <br><span style="color: white;">Shehreen Arshad</span></h1>
 
-    <img src="dp me.jpg" alt="Profile Picture" width="150">
+    <label for="profilePictureInput"><img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture"
+            title="Upload your profile picture."></label>
+    <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+
 
     <form id="resumeBuilder">
         <fieldset>
@@ -46,26 +49,24 @@
             <label for="address"><strong>Address:</strong></label>
             <input type="text" id="address" name="address" placeholder="Enter your full address." required>
 
-            <label for="profilePictureInput">Upload your picture:</label>
-            <input type="file" id="profilePictureInput" accept="image/*">
         </fieldset>
 
         <fieldset>
             <legend>Education</legend>
-            <label for="education">Education:</label>
+            <label for="education"><strong>Education:</strong></label>
             <textarea name="education" id="education" rows="4" placeholder="Enter your education."
                 required></textarea><br>
         </fieldset>
 
         <fieldset>
             <legend>Experience</legend>
-            <label for="experience">Experience:</label>
+            <label for="experience"><strong>Experience:</strong></label>
             <textarea name="experience" id="experience" rows="4" required></textarea><br>
         </fieldset>
 
         <fieldset id="skills">
             <legend>Skills</button></legend>
-            <label for="skills_exp">Skills Experience:</label>
+            <label for="skills_exp"><strong>Skills Experience:</strong></label>
             <textarea name="skills" id="skills_exp" rows="4" required></textarea><br>
         </fieldset>
 

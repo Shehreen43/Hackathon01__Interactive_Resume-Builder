@@ -9,9 +9,11 @@
 </head>
 
 <body>
-  <h1> Interactive And Dynamic Resume Builder</h1>
+  <h1>Dynamic Interactive Resume Builder By <br><span style="color: white;">Shehreen Arshad</span></h1>
 
-  <img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture">
+  <label for="profilePictureInput"><img src="dp me.jpg" alt="Profile Picture" width="150" id="profilePicture"
+      title="Upload your profile picture."></label>
+  <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
 
   <form id="resumeBuilder">
     <fieldset>
@@ -44,8 +46,6 @@
       <label for="address"><strong>Address:</strong></label>
       <input type="text" id="address" name="address" placeholder="Enter your full address." required>
 
-      <label for="profilePictureInput">Upload your picture:</label>
-      <input type="file" id="profilePictureInput" accept="image/*">
     </fieldset>
 
     <fieldset>

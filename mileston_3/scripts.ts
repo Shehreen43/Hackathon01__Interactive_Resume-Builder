@@ -3,11 +3,11 @@ const toggleSkillsButton = document.getElementById('toggle-skills');
 const skillsSection = document.getElementById('skills');
 
 toggleSkillsButton?.addEventListener('click', () => {
-    if (skillsSection?.style.display === 'none') {
-        skillsSection.style.display = 'block';
-    } else {
-        skillsSection!.style.display = 'none';
-    }
+  if (skillsSection?.style.display === 'none') {
+    skillsSection.style.display = 'block';
+  } else {
+    skillsSection!.style.display = 'none';
+  }
 });
 // Select the profile picture and file input elements
 const profilePicture = document.getElementById("profilePicture") as HTMLImageElement;
@@ -15,28 +15,28 @@ const profilePictureInput = document.querySelector("input[type=file]") as HTMLIn
 
 // Add click event listener to the profile picture
 profilePicture.addEventListener("click", () => {
-    profilePictureInput.click();
-  });
+  profilePictureInput.click();
+});
 
 // Add change event listener to the file input
 profilePictureInput.addEventListener("change", (event) => {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        console.log(reader.result); 
-        if (reader.result) {
-          profilePicture.src = reader.result as string;
-        } else {
-          console.error("Failed to load the image.");
-        }
-      };
-      reader.readAsDataURL(file);
-    } else {
-      console.error("No file selected.");
-    }
-  });
-  
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      console.log(reader.result);
+      if (reader.result) {
+        profilePicture.src = reader.result as string;
+      } else {
+        console.error("Failed to load the image.");
+      }
+    };
+    reader.readAsDataURL(file);
+  } else {
+    console.error("No file selected.");
+  }
+});
+
 
 const resumeBgColor = document.getElementById("bgColor") as HTMLInputElement;
 const headingColorPicker = document.getElementById("headingColor") as HTMLInputElement;
@@ -72,7 +72,7 @@ function addDeleteOption(field: HTMLElement) {
   field.appendChild(deleteButton); // Add delete button next to the field
 }
 
- /////////////////////
+/////////////////////
 const resumeForm = document.getElementById("resumeBuilder") as HTMLFormElement;
 const educationList = document.getElementById("education-list")!;
 const experienceList = document.getElementById("experience-list")!;
@@ -83,13 +83,13 @@ function createDeleteButton(container: HTMLElement) {
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
   deleteButton.className = "delete-button";
-  
+
   // Add click event listener for deleting the field
   deleteButton.addEventListener("click", (e) => {
     e.preventDefault();
     container.remove();
   });
-  
+
   return deleteButton;
 }
 
@@ -246,35 +246,35 @@ document.getElementById("resumeBuilder")
     const skillsListItems = Array.from(skillsFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
 
 
-        if (resumeName && resumeEmail && resumePhone && resumeAddress && resumeEducation && resumeExperience && resumeSkills && resumeAboutMe && resumeDOB && resumeGender && resumeNationality 
-           ){
-    const name = resumeName.value;
-     const aboutMe = resumeAboutMe.value;
-    const dob = resumeDOB.value;
-    const gender = resumeGender.value;
-    const nationality = resumeNationality.value;
-    const email = resumeEmail.value;
-    const phone = resumePhone.value;
-    const address = resumeAddress.value;
-   const selectedBgColor = resumeBgColor.value;
-    const selectedHeadingColor = headingColorPicker.value;
-    const selectedParagraphColor = paragraphColorPicker.value;
-/*
-    resumeOutput.classList.add("hidden");
-    resumeOutput.innerHTML = "";
-    resumeOutput.style.backgroundColor = "";
-    resumeOutput.style.color = "";
-    resumeOutput.style.padding = "";
-    resumeOutput.style.margin = "";
-    resumeOutput.style.borderRadius = "";
-    resumeOutput.style.boxShadow = "";
-*/
-    // Generate resume content
+    if (resumeName && resumeEmail && resumePhone && resumeAddress && resumeEducation && resumeExperience && resumeSkills && resumeAboutMe && resumeDOB && resumeGender && resumeNationality
+    ) {
+      const name = resumeName.value;
+      const aboutMe = resumeAboutMe.value;
+      const dob = resumeDOB.value;
+      const gender = resumeGender.value;
+      const nationality = resumeNationality.value;
+      const email = resumeEmail.value;
+      const phone = resumePhone.value;
+      const address = resumeAddress.value;
+      const selectedBgColor = resumeBgColor.value;
+      const selectedHeadingColor = headingColorPicker.value;
+      const selectedParagraphColor = paragraphColorPicker.value;
+      /*
+          resumeOutput.classList.add("hidden");
+          resumeOutput.innerHTML = "";
+          resumeOutput.style.backgroundColor = "";
+          resumeOutput.style.color = "";
+          resumeOutput.style.padding = "";
+          resumeOutput.style.margin = "";
+          resumeOutput.style.borderRadius = "";
+          resumeOutput.style.boxShadow = "";
+      */
+      // Generate resume content
       if (resumeOutput) {
         resumeOutput.innerHTML = `
 
       <div class="profile-container">
-      <h1 style.color = "white";>Resume</h1>
+      <h1 style.color = "white";>${name}'s Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150">
         <div>
        <h2>${name}</h2>
@@ -301,24 +301,25 @@ document.getElementById("resumeBuilder")
       <p><ul>${skillsListItems}</ul></p>
     `;
 
-    // Apply selected styles
-    resumeOutput.style.backgroundColor = selectedBgColor;
+        // Apply selected styles
+        resumeOutput.style.backgroundColor = selectedBgColor;
 
-    const headings = resumeOutput.querySelectorAll("h2, h3");
-    const paragraphs = resumeOutput.querySelectorAll("p");
+        const headings = resumeOutput.querySelectorAll("h2, h3");
+        const paragraphs = resumeOutput.querySelectorAll("p");
 
-    headings.forEach((heading) => {
-      (heading as HTMLElement).style.color = selectedHeadingColor;
-    });
+        headings.forEach((heading) => {
+          (heading as HTMLElement).style.color = selectedHeadingColor;
+        });
 
-    paragraphs.forEach((paragraph) => {
-      (paragraph as HTMLElement).style.color = selectedParagraphColor;
-    });
-    resumeOutput.classList.remove("hidden");
-    resumeOutput.scrollIntoView({ behavior: "smooth" });
+        paragraphs.forEach((paragraph) => {
+          (paragraph as HTMLElement).style.color = selectedParagraphColor;
+        });
+        resumeOutput.classList.remove("hidden");
+        resumeOutput.scrollIntoView({ behavior: "smooth" });
 
-}else if(!resumeName.value || !resumeEmail.value || !resumePhone.value || !resumeAddress.value || !resumeEducation.value || !resumeExperience.value || !resumeSkills.value || !resumeAboutMe.value || !resumeDOB.value || !resumeGender.value || !resumeNationality.value){
+      } else if (!resumeName.value || !resumeEmail.value || !resumePhone.value || !resumeAddress.value || !resumeEducation.value || !resumeExperience.value || !resumeSkills.value || !resumeAboutMe.value || !resumeDOB.value || !resumeGender.value || !resumeNationality.value) {
         alert("Please fill all the fields");
         return;
       }
-  }})
+    }
+  })

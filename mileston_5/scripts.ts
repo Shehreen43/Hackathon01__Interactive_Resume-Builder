@@ -3,13 +3,13 @@ const toggleSkillsButton = document.getElementById('toggle-skills');
 const skillsSection = document.getElementById('skills');
 
 toggleSkillsButton?.addEventListener('click', () => {
-    if (skillsSection?.style.display === 'none') {
-        skillsSection.style.display = 'block';
-        toggleSkillsButton.textContent = "hide";
-    } else {
-        skillsSection!.style.display = 'none';
-        toggleSkillsButton.textContent = "show";
-    }
+  if (skillsSection?.style.display === 'none') {
+    skillsSection.style.display = 'block';
+    toggleSkillsButton.textContent = "hide";
+  } else {
+    skillsSection!.style.display = 'none';
+    toggleSkillsButton.textContent = "show";
+  }
 });
 // Select the profile picture and file input elements
 const profilePicture = document.getElementById("profilePicture") as HTMLImageElement;
@@ -17,28 +17,28 @@ const profilePictureInput = document.querySelector("input[type=file]") as HTMLIn
 
 // Add click event listener to the profile picture
 profilePicture.addEventListener("click", () => {
-    profilePictureInput.click();
-  });
+  profilePictureInput.click();
+});
 
 // Add change event listener to the file input
 profilePictureInput.addEventListener("change", (event) => {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        console.log(reader.result); 
-        if (reader.result) {
-          profilePicture.src = reader.result as string;
-        } else {
-          console.error("Failed to load the image.");
-        }
-      };
-      reader.readAsDataURL(file);
-    } else {
-      console.error("No file selected.");
-    }
-  });
-  
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      console.log(reader.result);
+      if (reader.result) {
+        profilePicture.src = reader.result as string;
+      } else {
+        console.error("Failed to load the image.");
+      }
+    };
+    reader.readAsDataURL(file);
+  } else {
+    console.error("No file selected.");
+  }
+});
+
 
 const resumeBgColor = document.getElementById("bgColor") as HTMLInputElement;
 const headingColorPicker = document.getElementById("headingColor") as HTMLInputElement;
@@ -58,7 +58,7 @@ headingColorPicker.addEventListener("input", function () {
 
 paragraphColorPicker.addEventListener("input", function () {
   const paragraphs = resumeOutput.querySelectorAll("p");
-  const listItems = resumeOutput.querySelectorAll("li"); 
+  const listItems = resumeOutput.querySelectorAll("li");
 
   paragraphs.forEach((paragraph) => {
     (paragraph as HTMLElement).style.color = paragraphColorPicker.value;
@@ -79,7 +79,7 @@ function addDeleteOption(field: HTMLElement) {
   field.appendChild(deleteButton); // Add delete button next to the field
 }
 
- /////////////////////
+/////////////////////
 const resumeForm = document.getElementById("resumeBuilder") as HTMLFormElement;
 const educationList = document.getElementById("education-list")!;
 const experienceList = document.getElementById("experience-list")!;
@@ -90,13 +90,13 @@ function createDeleteButton(container: HTMLElement) {
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
   deleteButton.className = "delete-button";
-  
+
   // Add click event listener for deleting the field
   deleteButton.addEventListener("click", (e) => {
     e.preventDefault();
     container.remove();
   });
-  
+
   return deleteButton;
 }
 
@@ -221,8 +221,10 @@ document.getElementById("resumeBuilder")
         // Remove any previous error message
         if (errorMessage && errorMessage.classList.contains("error-message")) {
           errorMessage.remove();
-        }else if (!textarea.value.trim()) {
-          // If the field is empty, display error and set hasErrors to true
+        }
+
+        // If the field is empty, display error and set hasErrors to true
+        if (!textarea.value.trim()) {
           hasErrors = true;
 
           const error = document.createElement("p");
@@ -251,26 +253,26 @@ document.getElementById("resumeBuilder")
     const skillsListItems = Array.from(skillsFields).map((field) => `<li>${(field as HTMLTextAreaElement).value}</li>`).join("");
 
 
-        if (resumeName && resumeEmail && resumePhone && resumeAddress && resumeEducation && resumeExperience && resumeSkills && resumeAboutMe && resumeDOB && resumeGender && resumeNationality 
-           ){
-    const name = resumeName.value;
-     const aboutMe = resumeAboutMe.value;
-    const dob = resumeDOB.value;
-    const gender = resumeGender.value;
-    const nationality = resumeNationality.value;
-    const email = resumeEmail.value;
-    const phone = resumePhone.value;
-    const address = resumeAddress.value;
-   const selectedBgColor = resumeBgColor.value;
-    const selectedHeadingColor = headingColorPicker.value;
-    const selectedParagraphColor = paragraphColorPicker.value;
+    if (resumeName && resumeEmail && resumePhone && resumeAddress && resumeEducation && resumeExperience && resumeSkills && resumeAboutMe && resumeDOB && resumeGender && resumeNationality
+    ) {
+      const name = resumeName.value;
+      const aboutMe = resumeAboutMe.value;
+      const dob = resumeDOB.value;
+      const gender = resumeGender.value;
+      const nationality = resumeNationality.value;
+      const email = resumeEmail.value;
+      const phone = resumePhone.value;
+      const address = resumeAddress.value;
+      const selectedBgColor = resumeBgColor.value;
+      const selectedHeadingColor = headingColorPicker.value;
+      const selectedParagraphColor = paragraphColorPicker.value;
 
-    // Generate resume content
+      // Generate resume content
       if (resumeOutput) {
         resumeOutput.innerHTML = `
 
       <div class="profile-container">
-      <h1 class="editable" contenteditable="false">Resume</h1>
+      <h1 class="editable" contenteditable="false">${name}'s Resume</h1>
         <img src="${profilePicture.src}" alt="Profile Picture" width="150" height="150"class="editable" contenteditable="false">
         <div>
        <h2><span class="editable" contenteditable="false">${name}</span></h2>
@@ -300,74 +302,121 @@ document.getElementById("resumeBuilder")
       </div>
     `;
 
-    // Apply selected styles
-    resumeOutput.style.backgroundColor = selectedBgColor;
+        // Apply selected styles
+        resumeOutput.style.backgroundColor = selectedBgColor;
 
-    const headings = resumeOutput.querySelectorAll("h2, h3");
-    const paragraphs = resumeOutput.querySelectorAll("p");
-    const listItems = resumeOutput.querySelectorAll("li"); 
-    const editButton = document.getElementById("editButton") as HTMLButtonElement;
-    const editableSections = document.querySelectorAll(".editable");
-    
-    // Variable to track whether editing is enabled
-    let isEditing = false;
-    
-    // Function to enable editing mode
-    function toggleEditMode() {
-      if (isEditing) {
-        // Disable editing mode
-        editableSections.forEach((section) => {
-          (section as HTMLElement).setAttribute("contenteditable", "false");
-          section.classList.remove("editing");
+        const headings = resumeOutput.querySelectorAll("h2, h3");
+        const paragraphs = resumeOutput.querySelectorAll("p");
+        const listItems = resumeOutput.querySelectorAll("li");
+        const editButton = document.getElementById("editButton") as HTMLButtonElement;
+        const editableSections = document.querySelectorAll(".editable");
+
+        // Variable to track whether editing is enabled
+        let isEditing = false;
+
+        // Function to enable editing mode
+        function toggleEditMode() {
+          if (isEditing) {
+            // Disable editing mode
+            editableSections.forEach((section) => {
+              (section as HTMLElement).setAttribute("contenteditable", "false");
+              section.classList.remove("editing");
+            });
+            editButton.textContent = "Edit";
+          } else {
+            // Enable editing mode
+            editableSections.forEach((section) => {
+              (section as HTMLElement).setAttribute("contenteditable", "true");
+              section.classList.add("editing");
+            });
+            editButton.textContent = "Save";
+          }
+
+          isEditing = !isEditing;
+        }
+
+        // Listen for clicks on the edit button
+        editButton.addEventListener("click", toggleEditMode);
+
+        // Save changes on blur (when the user clicks outside of the edited field)
+        // editableSections.forEach((section) => {
+        //   section.addEventListener("blur", (event) => {
+        //     const target = event.target as HTMLElement;
+        //     console.log("New value:", target.textContent);  // Save or send data if needed
+        //   });
+        // });
+
+        headings.forEach((heading) => {
+          (heading as HTMLElement).style.color = selectedHeadingColor;
         });
-        editButton.textContent = "Edit";
-      } else {
-        // Enable editing mode
-        editableSections.forEach((section) => {
-          (section as HTMLElement).setAttribute("contenteditable", "true");
-          section.classList.add("editing");
+
+        paragraphs.forEach((paragraph) => {
+          (paragraph as HTMLElement).style.color = selectedParagraphColor;
         });
-        editButton.textContent = "Save";
-      }
-    
-      isEditing = !isEditing;
-    }
-    
-    // Listen for clicks on the edit button
-    editButton.addEventListener("click", toggleEditMode);
-    
-    // Save changes on blur (when the user clicks outside of the edited field)
-    editableSections.forEach((section) => {
-      section.addEventListener("blur", (event) => {
-        const target = event.target as HTMLElement;
-        console.log("New value:", target.textContent);  // Save or send data if needed
-      });
-    });
-
-    headings.forEach((heading) => {
-      (heading as HTMLElement).style.color = selectedHeadingColor;
-    });
-
-    paragraphs.forEach((paragraph) => {
-      (paragraph as HTMLElement).style.color = selectedParagraphColor;
-    });
-    listItems.forEach((item) => {
-      (item as HTMLElement).style.color = selectedParagraphColor;
-    });
-    const intervalId = setInterval(() => {
-      alert("Resume generated successfully!");
-      clearInterval(intervalId); // Stops the interval after the first alert
-    }, 1000); 
-   
-
-    resumeOutput.classList.remove("hidden");
-    resumeOutput.scrollIntoView({ behavior: "smooth" });
+        listItems.forEach((item) => {
+          (item as HTMLElement).style.color = selectedParagraphColor;
+        });
+        const intervalId = setInterval(() => {
+          alert("Resume generated successfully!");
+          clearInterval(intervalId); // Stops the interval after the first alert
+        }, 1000);
 
 
-}else if(!resumeName.value || !resumeEmail.value || !resumePhone.value || !resumeAddress.value || !resumeEducation.value || !resumeExperience.value || !resumeSkills.value || !resumeAboutMe.value || !resumeDOB.value || !resumeGender.value || !resumeNationality.value){
+        resumeOutput.classList.remove("hidden");
+        resumeOutput.scrollIntoView({ behavior: "smooth" });
+
+
+      } else if (!resumeName.value || !resumeEmail.value || !resumePhone.value || !resumeAddress.value || !resumeEducation.value || !resumeExperience.value || !resumeSkills.value || !resumeAboutMe.value || !resumeDOB.value || !resumeGender.value || !resumeNationality.value) {
         alert("Please fill all the fields");
         return;
       }
-  }})
+    }
+  })
 
+
+//
+function generateUniqueURL(username: string): string {
+  const uniqueString = Date.now().toString(36) + Math.random().toString(36);
+  return `${username}.${uniqueString}.vercel.app/resume`;
+}
+
+generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
+
+const shareButtons = document.getElementById("downloadPDF");
+shareButtons?.addEventListener("click", () => {
+  const resumeOutput = document.getElementById("resumeOutput");
+  const resumeHTML = resumeOutput?.innerHTML || "";
+  const blob = new Blob([resumeHTML], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  const uniqueURL = generateUniqueURL((document.getElementById("userName") as HTMLInputElement).value);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${uniqueURL}.html`;
+  link.click();
+  URL.revokeObjectURL(url);
+});
+
+//
+const shareButton = document.getElementById('shareButton') as HTMLButtonElement;
+
+shareButton.addEventListener("click", () => {
+  const username = (document.getElementById("userName") as HTMLInputElement).value;
+  const uniqueURL = generateUniqueURL(username);
+
+  // Copy the URL to clipboard
+  navigator.clipboard.writeText(uniqueURL).then(() => {
+
+    const intervalId = setInterval(() => {
+      alert("your resume link copied successfully!");
+      clearInterval(intervalId); // Stops the interval after the first alert
+    }, 1000);
+    // Reset the button text after a short delay
+    setTimeout(() => {
+      shareButton.textContent = "Share Resume";
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+    shareButton.textContent = "Failed to copy URL";
+  });
+});
 
