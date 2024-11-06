@@ -1,17 +1,33 @@
 "use strict";
-var _a, _b, _c, _d;
 // script.ts
-const toggleSkillsButton = document.getElementById('toggle-skills');
-const skillsSection = document.getElementById('skills');
-toggleSkillsButton === null || toggleSkillsButton === void 0 ? void 0 : toggleSkillsButton.addEventListener('click', () => {
-    if ((skillsSection === null || skillsSection === void 0 ? void 0 : skillsSection.style.display) === 'none') {
-        skillsSection.style.display = 'block';
-        toggleSkillsButton.textContent = "hide";
-    }
-    else {
-        skillsSection.style.display = 'none';
-        toggleSkillsButton.textContent = "show";
-    }
+// const toggleSkillsButton = document.getElementById('toggle-skills');
+// const skillsSection = document.getElementById('skills');
+var _a, _b, _c, _d;
+document.addEventListener('DOMContentLoaded', () => {
+    // Define all sections in an array for convenience
+    const sections = [
+        { name: 'Personal Information', element: document.querySelector('fieldset') },
+        { name: 'Education', element: document.querySelectorAll('fieldset')[1] },
+        { name: 'Work Experience', element: document.querySelectorAll('fieldset')[2] },
+        { name: 'Skills', element: document.querySelectorAll('fieldset')[3] },
+        { name: 'Customize Resume', element: document.querySelectorAll('fieldset')[4] },
+    ];
+    // Function to create a toggle button
+    const createToggleButton = (section, element) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = `${section}`;
+        button.style.marginBottom = '10px';
+        button.addEventListener('click', () => {
+            element.style.display = element.style.display === 'none' ? 'block' : 'none';
+        });
+        return button;
+    };
+    // Add toggle button to each section
+    sections.forEach(({ name, element }) => {
+        const toggleButton = createToggleButton(name, element);
+        element.before(toggleButton); // Place button before each section
+    });
 });
 // Select the profile picture and file input elements
 const profilePicture = document.getElementById("profilePicture");

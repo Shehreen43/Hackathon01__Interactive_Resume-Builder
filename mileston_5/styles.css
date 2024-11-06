@@ -21,7 +21,7 @@ img {
 form {
     max-width: 600px;
     margin: auto;
-    background-color: rgb(7, 83, 83);
+    background-color: rgb(39, 84, 84);;
     border-radius: 8px;
     padding: 20px;
     position: relative;
@@ -29,7 +29,7 @@ form {
 }
 
 fieldset {
-    border: 2px solid #60c1e4;
+    border: 2px solid rgba(11, 231, 231);
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
@@ -37,8 +37,6 @@ fieldset {
     background-color: transparent
         /* rgb(15, 111, 111);*/
 }
-
-#toggle-skills,
 legend {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
@@ -53,15 +51,19 @@ legend {
 }
 
 button {
-    background-color: #60c1e4;
+    width: 100%;
+    background-color: rgba(11, 231, 231);
     color: white;
-    text-align: center;
+    text-align: left;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
+}
+.center_btn{
+    width: 200px;
 }
 
 label {
@@ -79,7 +81,7 @@ textarea {
     width: 100%;
     padding: 8px;
     margin: 5px 0 10px;
-    border: 2px solid #60c1e4;
+    border: 2px solid rgba(11, 231, 231);;
     ;
     border-radius: 5px;
     box-sizing: border-box;
@@ -91,23 +93,10 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #342dbb;
-    box-shadow: 0 0 10px #322e7c
+    border-color: #d0d6d6;
+    box-shadow: 0 0 10px #d0d6d6
 }
-
-button[type="submit"] {
-    width: 100%;
-    background-color: #60c1e4;
-    ;
-    color: rgb(245, 234, 234);
-    padding: 5px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-button[type="submit"]:hover {
+button:hover {
     background-color: black;
     box-shadow: 2px 3px 10px white;
 }

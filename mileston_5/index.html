@@ -17,7 +17,7 @@
 
 
   <form id="resumeBuilder">
-    <fieldset>
+    <fieldset style="display: none;">
       <legend>Personal Information</legend>
 
       <label for="user_url"><strong>Resume URL:</strong></label>
@@ -53,7 +53,7 @@
 
     </fieldset>
 
-    <fieldset>
+    <fieldset style="display: none;">
       <legend>Education</legend>
       <div id="education-list">
         <label for="education"><strong>Education:</strong></label>
@@ -62,7 +62,7 @@
       <button type="button" id="add-education">Add More Education</button><br>
     </fieldset>
 
-    <fieldset>
+    <fieldset style="display: none;">
       <legend>Work Experience</legend>
       <div id="experience-list">
         <label for="experience"><strong>Work Experience:</strong></label>
@@ -72,7 +72,7 @@
       <button type="button" id="add-experience">Add More Experience</button><br>
     </fieldset>
 
-    <fieldset id="skills">
+    <fieldset id="skills" style="display: none;">
       <legend>Skills</legend>
       <div id="skills-list">
         <label for="skills_exp"><strong>Skills:</strong></label>
@@ -81,7 +81,7 @@
       <button type="button" id="add-skills">Add More Skills</button><br>
     </fieldset>
 
-    <fieldset>
+    <fieldset  style="display: none;">
       <legend>Customize Resume</legend>
 
       <label for="bgColor"><strong>Select Resume Background Color:</strong></label>
@@ -95,7 +95,7 @@
     </fieldset>
 
 
-    <button type="button" id="toggle-skills">Toggle Skills</button>
+    <!-- <button type="button" id="toggle-skills">Toggle Skills</button> -->
 
     <button type="submit">Generate Resume</button>
   </form>
@@ -103,8 +103,8 @@
   <div id="resumeOutput"></div>
 
   <div id="center">
-    <button id="shareButton">Share Resume</button>
-    <button id="downloadPDF">Download PDF</button>
+    <button id="shareButton" class="center_btn">Share Resume</button>
+    <button id="downloadPDF" class="center_btn">Download PDF</button>
   </div>
   <script src="scripts.js"></script>
 </body>
