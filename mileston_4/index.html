@@ -16,7 +16,7 @@
   <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
 
   <form id="resumeBuilder">
-    <fieldset>
+    <fieldset style="display: none;">
       <legend>Personal Information</legend>
       <label for="userName"><strong>Name:</strong></label>
       <input type="text" id="userName" name="userName" required spellcheck="false" placeholder="Enter your name.">
@@ -48,35 +48,35 @@
 
     </fieldset>
 
-    <fieldset>
+    <fieldset style="display: none;">
       <legend>Education</legend>
       <div id="education-list">
         <label for="education"><strong>Education:</strong></label>
         <textarea name="education" id="education" rows="2" placeholder="Enter your education." required></textarea>
       </div>
-      <button type="button" id="add-education">Add More Education</button><br>
+      <button type="button" id="add-education" class="add_more">Add More Education</button><br>
     </fieldset>
 
-    <fieldset>
+    <fieldset style="display: none;">
       <legend>Work Experience</legend>
       <div id="experience-list">
         <label for="experience"><strong>Work Experience:</strong></label>
         <textarea name="experience" id="experience" rows="2" placeholder="Please share your job experience."
           required></textarea>
       </div>
-      <button type="button" id="add-experience">Add More Experience</button><br>
+      <button type="button" id="add-experience" class="add_more">Add More Experience</button><br>
     </fieldset>
 
-    <fieldset id="skills">
+    <fieldset id="skills" style="display: none;">
       <legend>Skills</legend>
       <div id="skills-list">
         <label for="skills_exp"><strong>Skills:</strong></label>
         <textarea name="skills" id="skills_exp" rows="2" placeholder="Please enter skills." required></textarea>
       </div>
-      <button type="button" id="add-skills">Add More Skills</button><br>
+      <button type="button" id="add-skills" class="add_more">Add More Skills</button><br>
     </fieldset>
 
-    <fieldset>
+    <fieldset style="display: none;">
       <legend>Customize Resume</legend>
 
       <label for="bgColor"><strong>Select Resume Background Color:</strong></label>
@@ -88,9 +88,6 @@
       <label for="paragraphColor"><strong>Select Paragraph Font Color:</strong></label>
       <input type="color" id="paragraphColor" name="paragraphColor" value="#000000"><br>
     </fieldset>
-
-
-    <button type="button" id="toggle-skills">Toggle Skills</button>
 
     <button type="submit">Generate Resume</button>
   </form>

@@ -1,7 +1,4 @@
 "use strict";
-// script.ts
-// const toggleSkillsButton = document.getElementById('toggle-skills');
-// const skillsSection = document.getElementById('skills');
 var _a, _b, _c, _d;
 document.addEventListener('DOMContentLoaded', () => {
     // Define all sections in an array for convenience

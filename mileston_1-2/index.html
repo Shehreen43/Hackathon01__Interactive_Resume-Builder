@@ -18,7 +18,7 @@
 
 
     <form id="resumeBuilder">
-        <fieldset>
+        <fieldset style="display: none;">
             <legend>Personal Information</legend>
 
             <label for="userName"><strong>Name:</strong></label>
@@ -51,27 +51,24 @@
 
         </fieldset>
 
-        <fieldset>
+        <fieldset style="display: none;">
             <legend>Education</legend>
             <label for="education"><strong>Education:</strong></label>
             <textarea name="education" id="education" rows="4" placeholder="Enter your education."
                 required></textarea><br>
         </fieldset>
 
-        <fieldset>
+        <fieldset style="display: none;">
             <legend>Experience</legend>
             <label for="experience"><strong>Experience:</strong></label>
             <textarea name="experience" id="experience" rows="4" required></textarea><br>
         </fieldset>
 
-        <fieldset id="skills">
+        <fieldset id="skills" style="display: none;">
             <legend>Skills</button></legend>
             <label for="skills_exp"><strong>Skills Experience:</strong></label>
             <textarea name="skills" id="skills_exp" rows="4" required></textarea><br>
         </fieldset>
-
-        <!-- Button to toggle Skills section -->
-        <button type='button' id="toggle-skills">Toggle Skills</button>
 
         <button type="submit">Generate Resume</button>
 

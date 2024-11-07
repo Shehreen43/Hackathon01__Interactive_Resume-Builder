@@ -13,9 +13,9 @@ h1 {
 
 img {
     border-radius: 50%;
+    margin-top: 10px;
     display: block;
-    margin: 10px auto 5px;
-    object-fit: cover;
+    margin: 0 auto;
 }
 
 form {
@@ -29,17 +29,14 @@ form {
 }
 
 fieldset {
-    border: 2px solid #60c1e4;
+    border: 2px solid rgb(9, 205, 205);
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
-    font-size: 16px;
+    font-size: 20px;
     background-color: transparent
         /* rgb(15, 111, 111);*/
-
 }
-
-#toggle-skills,
 legend {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
@@ -49,39 +46,25 @@ legend {
     text-shadow: 2px 2px 5px black;
     border: none;
     background: transparent;
-    padding: 0;
     margin-bottom: 5px;
-}
-
-button {
-    background-color: #60c1e4;
-    color: white;
-    text-align: center;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
 }
 
 label {
     display: block;
     margin-top: 10px;
-}
+  }
 
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="date"],
-input[type="color"],
+input[type="file"],
 select,
 textarea {
     width: 100%;
     padding: 8px;
     margin: 5px 0 10px;
-    border: 2px solid #60c1e4;
-    ;
+    border: 2px solid rgb(9, 205, 205);
     border-radius: 5px;
     box-sizing: border-box;
     background: transparent;
@@ -92,26 +75,39 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #342dbb;
-    box-shadow: 0 0 10px #322e7c
+    border-color: white;
+    box-shadow: 0 0 10px white;
 }
 
-button[type="submit"] {
+button{
     width: 100%;
-    background-color: #56aff2;
-    color: rgb(245, 234, 234);
-    padding: 5px 20px;
+    background-color: rgb(9, 205, 205);
+    font-weight: 600;
+    color: white;
+    text-align: left;
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 15px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.add_more{
+   background: rgb(5, 40, 40);
 }
 
-button[type="submit"]:hover {
-    background-color: black;
-    box-shadow: 2px 3px 10px white;
+button[type="button"]:hover,
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+input[type="date"]:hover,
+input[type="file"]:hover,
+select:hover,
+textarea:hover,
+form:hover,
+fieldset:hover {
+    box-shadow: 0px 0px 10px rgb(9, 205, 205);
 }
-
 .error-message {
     color: red;
     font-size: 0.9em;
@@ -156,7 +152,7 @@ fieldset:hover {
 }
 
 #resumeOutput {
-    max-width: 600px;
+    max-width: 800px;
     margin: auto;
     padding: 10px;
     border-radius: 8px;
@@ -167,9 +163,6 @@ fieldset:hover {
     overflow-wrap: break-word;
     margin-top: 3%;
 }
-
-
-
 #resumeOutput h2,
 #resumeOutput h3,
 #resumeOutput strong,

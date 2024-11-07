@@ -29,7 +29,7 @@ form {
 }
 
 fieldset {
-    border: 2px solid #60c1e4;
+    border: 2px solid rgb(9, 205, 205);
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
@@ -37,8 +37,6 @@ fieldset {
     background-color: transparent
         /* rgb(15, 111, 111);*/
 }
-
-#toggle-skills,
 legend {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
@@ -67,8 +65,7 @@ textarea {
     width: 100%;
     padding: 8px;
     margin: 5px 0 10px;
-    border: 2px solid #60c1e4;
-    ;
+    border: 2px solid rgb(9, 205, 205);
     border-radius: 5px;
     box-sizing: border-box;
     background: transparent;
@@ -79,13 +76,14 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #342dbb;
-    box-shadow: 0 0 10px #322e7c
+    border-color: white;
+    box-shadow: 0 0 10px white;
 }
 
 button{
     width: 100%;
-    background-color: rgba(11, 231, 231);
+    background-color: rgb(9, 205, 205);
+    font-weight: 600;
     color: white;
     text-align: left;
     border: none;
@@ -106,7 +104,7 @@ select:hover,
 textarea:hover,
 form:hover,
 fieldset:hover {
-    box-shadow: 2px 2px 10px white
+    box-shadow: 0px 0px 10px rgb(9, 205, 205);
 }
 
 /* Responsive behavior */
@@ -114,6 +112,7 @@ fieldset:hover {
 
     form {
         width: 100%;
+        margin-top: 15px;
     }
 
     textarea,

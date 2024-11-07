@@ -1,16 +1,4 @@
 // script.ts
-// const toggleSkillsButton = document.getElementById('toggle-skills');
-// const skillsSection = document.getElementById('skills');
-
-// toggleSkillsButton?.addEventListener('click', () => {
-//   if (skillsSection?.style.display === 'none') {
-//     skillsSection.style.display = 'block';
-//     toggleSkillsButton.textContent = "hide";
-//   } else {
-//     skillsSection!.style.display = 'none';
-//     toggleSkillsButton.textContent = "show";
-//   }
-// });
 // Define types for each section
 type Section = 'Personal Information' | 'Education' | 'Work Experience' | 'Skills' | 'Customize Resume';
 

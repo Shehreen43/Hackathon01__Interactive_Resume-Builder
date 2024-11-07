@@ -13,9 +13,9 @@ h1 {
 
 img {
     border-radius: 50%;
+    margin-top: 10px;
     display: block;
-    margin: 10px auto 5px;
-    object-fit: cover;
+    margin: 0 auto;
 }
 
 form {
@@ -29,15 +29,14 @@ form {
 }
 
 fieldset {
-    border: 2px solid #60c1e4;
+    border: 2px solid rgb(9, 205, 205);
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
     font-size: 20px;
-    background-color: rgb(15, 111, 111);
+    background-color: transparent
+        /* rgb(15, 111, 111);*/
 }
-
-#toggle-skills,
 legend {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
@@ -47,39 +46,25 @@ legend {
     text-shadow: 2px 2px 5px black;
     border: none;
     background: transparent;
-    padding: 0;
     margin-bottom: 5px;
-}
-
-button {
-    background-color: #60c1e4;
-    color: white;
-    text-align: center;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
 }
 
 label {
     display: block;
     margin-top: 10px;
-}
+  }
 
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="date"],
-input[type="color"],
+input[type="file"],
 select,
 textarea {
     width: 100%;
     padding: 8px;
     margin: 5px 0 10px;
-    border: 2px solid #60c1e4;
-    ;
+    border: 2px solid rgb(9, 205, 205);
     border-radius: 5px;
     box-sizing: border-box;
     background: transparent;
@@ -90,27 +75,35 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #342dbb;
-    box-shadow: 0 0 10px #322e7c
+    border-color: white;
+    box-shadow: 0 0 10px white;
 }
 
-button[type="submit"] {
+button{
     width: 100%;
-    background-color: #60c1e4;
-    ;
-    color: rgb(245, 234, 234);
-    padding: 5px 20px;
+    background-color: rgb(9, 205, 205);
+    font-weight: 600;
+    color: white;
+    text-align: left;
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 15px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.add_more{
+   background: rgb(5, 40, 40);
 }
 
-button[type="submit"]:hover {
-    background-color: black;
-    box-shadow: 2px 3px 10px white;
+input:hover,
+select:hover,
+textarea:hover,
+form:hover,
+button:hover,
+fieldset:hover {
+    box-shadow: 0px 0px 10px rgb(9, 205, 205);
 }
-
 .error-message {
     color: red;
     font-size: 0.9em;
@@ -127,11 +120,12 @@ button[type="submit"]:hover {
 }
 
 .delete-button:hover {
-    background-color: #850411;
+    background-color: #900715;
 }
 
 #resumeOutput h1 {
     color: white;
+    text-transform: capitalize;
     text-shadow:
         -1px -1px 0 black,
         /*1px to the top-left of the text.*/
@@ -141,32 +135,21 @@ button[type="submit"]:hover {
         /*1px to the bottom-left.*/
         1px 1px 0 black;
     /*1px to the bottom-right.*/
-}
 
-button:hover,
-input:hover,
-select:hover,
-textarea:hover,
-form:hover,
-fieldset:hover {
-    box-shadow: 2px 2px 10px white;
 }
 
 #resumeOutput {
-    max-width: 600px;
+    max-width: 700px;
     margin: auto;
     padding: 10px;
     border-radius: 8px;
     background-color: rgb(105, 215, 215);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     color: black;
-    overflow-wrap: break-word;
     text-align: left;
+    overflow-wrap: break-word;
     margin-top: 3%;
 }
-
-
-
 #resumeOutput h2,
 #resumeOutput h3,
 #resumeOutput strong,
@@ -201,10 +184,6 @@ ul li {
     color: #333;
 }
 
-button {
-    margin-top: 10px;
-}
-
 /* Responsive behavior */
 @media screen and (max-width: 600px) {
 
@@ -218,6 +197,7 @@ button {
     input[type="email"],
     input[type="tel"],
     input[type="date"],
+    input[type="file"],
     select {
         width: 98%;
     }

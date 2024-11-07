@@ -21,7 +21,7 @@ img {
 form {
     max-width: 600px;
     margin: auto;
-    background-color: rgb(39, 84, 84);;
+    background-color: rgb(7, 83, 83);
     border-radius: 8px;
     padding: 20px;
     position: relative;
@@ -29,7 +29,7 @@ form {
 }
 
 fieldset {
-    border: 2px solid rgba(11, 231, 231);
+    border: 2px solid rgb(9, 205, 205);
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
@@ -49,10 +49,9 @@ legend {
     padding: 0;
     margin-bottom: 5px;
 }
-
 button {
     width: 100%;
-    background-color: rgba(11, 231, 231);
+    background-color: rgb(9, 205, 205);
     color: white;
     text-align: left;
     border: none;
@@ -65,7 +64,9 @@ button {
 .center_btn{
     width: 200px;
 }
-
+.add_more{
+    background: rgb(5, 40, 40);
+ }
 label {
     display: block;
     margin-top: 10px;
@@ -81,8 +82,7 @@ textarea {
     width: 100%;
     padding: 8px;
     margin: 5px 0 10px;
-    border: 2px solid rgba(11, 231, 231);;
-    ;
+    border: 2px solid rgb(9, 205, 205);
     border-radius: 5px;
     box-sizing: border-box;
     background: transparent;
@@ -93,12 +93,16 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #d0d6d6;
-    box-shadow: 0 0 10px #d0d6d6
+    border-color: white;
+    box-shadow: 0 0 10px white;
 }
-button:hover {
-    background-color: black;
-    box-shadow: 2px 3px 10px white;
+input:hover,
+select:hover,
+textarea:hover,
+form:hover,
+button:hover,
+fieldset:hover {
+    box-shadow: 0px 0px 10px rgb(9, 205, 205);
 }
 
 .error-message {
@@ -134,15 +138,6 @@ button:hover {
     /*1px to the bottom-right.*/
 }
 
-button:hover,
-input:hover,
-select:hover,
-textarea:hover,
-form:hover,
-fieldset:hover {
-    box-shadow: 2px 2px 7px white;
-}
-
 #resumeOutput {
     max-width: 600px;
     margin: auto;
@@ -155,9 +150,6 @@ fieldset:hover {
     text-align: left;
     margin-top: 3%;
 }
-
-
-
 #resumeOutput h2,
 #resumeOutput h3,
 #resumeOutput strong,
